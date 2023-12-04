@@ -6,7 +6,7 @@ const Page = () => {
   return (
     <>
       <Head>
-        <title>The Goodness Land</title>
+        <title>Taste Of Persia</title>
         <meta name="description" content="The Goodness Land" />
         <link rel="icon" href="/favicon.ico" />
       </Head>

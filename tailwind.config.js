@@ -25,7 +25,7 @@ module.exports = {
         'blue-500': '#2196f3'
       },
       backgroundImage: {
-        'home-bg': "url('/images/slide01.jpg')",
+        'home-bg': "url('/images/heroBg.jpg')",
         'home-bg-overlay': "url('/images/slide01-overlay.png')",
         'hero-bg': "url('/images/hero2.jpg')"
       },

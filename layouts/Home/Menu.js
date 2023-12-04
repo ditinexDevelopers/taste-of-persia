@@ -8,6 +8,31 @@ import { useRouter } from 'next/router';
 const Section = ({ _this }) => {
   const router = useRouter();
 
+  const menus = [
+    {
+      img: require('public/images/hero_bak.png'),
+      name: 'Bolani',
+      description: `Fried flatbread filled with your choice of veggie,
+      potato, or butter squash with a side of chutney
+      (traditional spicy sauce)`,
+      price: '9.99'
+    },
+    {
+      img: require('public/images/hero_bak.png'),
+      name: 'Shami Kabob',
+      description: `Marinated mixed ground meat (beef & lamb) with basmati rice
+      and house salad.`,
+      price: '22.99'
+    },
+    {
+      img: require('public/images/hero_bak.png'),
+      name: 'Chicken Biryani',
+      description: `Steamed basmati rice with marinated chicken and traditional
+      Afghan hot spices. Only available on Friday, Saturday and Sunday`,
+      price: '20.99'
+    }
+  ];
+
   return (
     <div className="py-4 mb-14" id="menu">
       <h4 className="font-montez sm:text-6xl text-4xl text-secondary tracking-wide text-center">
@@ -21,7 +46,7 @@ const Section = ({ _this }) => {
         </div>
       </div>
       {/* MENU Category */}
-      <div className="flex flex-row flex-wrap justify-center items-center my-4 max-w-7xl m-auto">
+      {/* <div className="flex flex-row flex-wrap justify-center items-center my-4 max-w-7xl m-auto">
         <div
           onClick={() => _this.setSelectedCategory('')}
           className={classNames(
@@ -49,10 +74,10 @@ const Section = ({ _this }) => {
             </div>
           );
         })}
-      </div>
+      </div> */}
       {/* MENU Items */}
       <div className="flex flex-row flex-wrap justify-center items-center my-4">
-        {_this.menus?.map((item, index) => {
+        {menus?.map((item, index) => {
           return (
             <div
               key={index}
@@ -62,7 +87,8 @@ const Section = ({ _this }) => {
                 <div className="bg-borderlight w-full p-1">
                   <div className="w-full h-[150px] relative rounded-md overflow-hidden m-auto">
                     <Image
-                      src={Config.STORAGE_URL + item.image}
+                      // src={Config.STORAGE_URL + item.image}
+                      src={item.img}
                       alt={item.name}
                       layout="fill"
                       objectFit="cover"
@@ -76,7 +102,7 @@ const Section = ({ _this }) => {
 
               <div className="relative">
                 <h5 className="absolute text-sm text-white font-bold bg-secondary border-2 border-white w-16 h-16 rounded-full flex justify-center items-center -top-8 right-2">
-                  $ {item.price.toFixed(2)}
+                  $ {item.price}
                 </h5>
 
                 <ButtonSecondary

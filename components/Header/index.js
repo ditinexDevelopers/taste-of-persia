@@ -6,6 +6,8 @@ import { useRouter } from 'next/router';
 import { FaShoppingCart } from 'react-icons/fa';
 import { useSelector } from 'react-redux';
 import classNames from 'classnames';
+import Image from 'next/image';
+import Logo from '../../public/images/logo.png';
 
 const Component = () => {
   const router = useRouter();
@@ -36,6 +38,9 @@ const Component = () => {
     <header>
       <div className={navStyle}>
         <div className="flex flex-row justify-between max-w-6xl m-auto min-h-[80px] items-center sm:px-0 px-2">
+          <div>
+            <Image src={Logo} height={50} width={120} className="ml-2 rounded-lg" alt="logo" />
+          </div>
           <div
             className="float-left py-1 sm:hidden block cursor-pointer"
             onClick={() => setMobileMenu(mobileMenu == 'h-0' ? 'h-auto' : 'h-0')}
@@ -84,7 +89,7 @@ const Component = () => {
             </ul>
           </div>
 
-          <div className="flex items-center">
+          {/* <div className="flex items-center">
             <div className="relative">
               <span className="h-6 w-6 text-center rounded-full text-white bg-red-700 absolute overflow-hidden ml-8 mt-[-12px]">
                 {cart.length}
@@ -100,7 +105,7 @@ const Component = () => {
             ) : (
               <ButtonSecondary onClick={() => router.push('/user/dashboard')} label="My Account" />
             )}
-          </div>
+          </div> */}
         </div>
       </div>
     </header>
