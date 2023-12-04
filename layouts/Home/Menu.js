@@ -10,7 +10,7 @@ const Section = ({ _this }) => {
 
   const menus = [
     {
-      img: require('public/images/hero_bak.png'),
+      img: require('public/images/bolani.jpg'),
       name: 'Bolani',
       description: `Fried flatbread filled with your choice of veggie,
       potato, or butter squash with a side of chutney
@@ -18,17 +18,25 @@ const Section = ({ _this }) => {
       price: '9.99'
     },
     {
-      img: require('public/images/hero_bak.png'),
+      img: require('public/images/shami_kabab.webp'),
       name: 'Shami Kabob',
       description: `Marinated mixed ground meat (beef & lamb) with basmati rice
       and house salad.`,
       price: '22.99'
     },
     {
-      img: require('public/images/hero_bak.png'),
+      img: require('public/images/chicken_biryani.jpg'),
       name: 'Chicken Biryani',
       description: `Steamed basmati rice with marinated chicken and traditional
       Afghan hot spices. Only available on Friday, Saturday and Sunday`,
+      price: '20.99'
+    },
+    {
+      img: require('public/images/mantu.jpeg'),
+      name: 'Mantu',
+      description: `Steamed dumplings filled with ground beef and onions topped
+      with chaka (traditional yogurt sauce), tomato sauce and
+      sprinkled with dried mint.`,
       price: '20.99'
     }
   ];
@@ -116,9 +124,9 @@ const Section = ({ _this }) => {
         })}
       </div>
 
-      <div className="flex justify-center mt-20">
+      {/* <div className="flex justify-center mt-20">
         <ButtonSecondary label="Proceed To Checkout" onClick={() => router.push('/user/cart')} />
-      </div>
+      </div> */}
     </div>
   );
 };

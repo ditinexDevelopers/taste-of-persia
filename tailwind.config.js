@@ -26,6 +26,7 @@ module.exports = {
       },
       backgroundImage: {
         'home-bg': "url('/images/heroBg.jpg')",
+        'mbhome-bg': "url('/images/heroMobileBg.jpg')",
         'home-bg-overlay': "url('/images/slide01-overlay.png')",
         'hero-bg': "url('/images/hero2.jpg')"
       },

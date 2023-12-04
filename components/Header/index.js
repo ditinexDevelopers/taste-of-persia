@@ -38,9 +38,16 @@ const Component = () => {
     <header>
       <div className={navStyle}>
         <div className="flex flex-row justify-between max-w-6xl m-auto min-h-[80px] items-center sm:px-0 px-2">
-          <div>
-            <Image src={Logo} height={50} width={120} className="ml-2 rounded-lg" alt="logo" />
-          </div>
+          <Link href={'/'}>
+            <Image
+              src={Logo}
+              height={50}
+              width={120}
+              className="cursor-pointer ml-2 rounded-lg"
+              alt="logo"
+            />
+          </Link>
+
           <div
             className="float-left py-1 sm:hidden block cursor-pointer"
             onClick={() => setMobileMenu(mobileMenu == 'h-0' ? 'h-auto' : 'h-0')}

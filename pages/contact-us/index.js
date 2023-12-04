@@ -5,7 +5,7 @@ const Page = () => {
   return (
     <>
       <Head>
-        <title>The Goodness Land - About Us</title>
+        <title>Taste of Persia - Contact Us</title>
         <meta name="description" content="Royal Plate app" />
         <link rel="icon" href="/favicon.ico" />
       </Head>

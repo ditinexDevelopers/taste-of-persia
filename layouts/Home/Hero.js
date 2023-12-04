@@ -23,8 +23,8 @@ const Section = ({ _this }) => {
             Fresh Taste at a Great Price, only for Hungry People.
           </h4>
           <p className="text-gray-200 mt-4 text-lg sm:text-left text-center">
-            The Goodness Land is a restaurant located on a busy corner site in Farringdon's Exmouth
-            Market. You can order your favourite food and pickup when order is ready.{' '}
+            Taste of Persia is a restaurant well known for their famous recipes. You can order your
+            favourite food and pickup when order is ready.{' '}
           </p>
         </div>
       </div>

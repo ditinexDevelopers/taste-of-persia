@@ -27,7 +27,7 @@ const Section = ({ _this }) => {
               </div>
               <div className="50">
                 <h5 className=" font-bold m-2 text-secondary text-2xl text-center">Give A Call</h5>
-                <p className="text-sm m-2.5 text-[#2a435d] text-center">208-377-7900</p>
+                <p className="text-sm m-2.5 text-[#2a435d] text-center">208-375-8312</p>
               </div>
             </div>
 
@@ -40,9 +40,9 @@ const Section = ({ _this }) => {
                   Get Direction
                 </h5>
                 <p className="text-sm m-2.5 text-[#2a435d] text-center">
-                  6555 W Overland Rd Unit 110,
+                  10386 W Ustick Rd
                   <br />
-                  Boise, ID 83709
+                  Boise, ID 83704
                 </p>
               </div>
             </div>
@@ -56,10 +56,8 @@ const Section = ({ _this }) => {
                   Opening Hours
                 </h5>
                 <p className="text-sm m-2.5 text-[#2a435d] text-center">
-                  Monday : 11AM - 9PM <br />
-                  Tuesday : Closed
-                  <br /> Wed - Sat : 11AM - 9PM
-                  <br /> Sunday : 12PM - 8PM
+                  Monday : Closed <br />
+                  <br /> Tueday - Sunday : 12PM - 9PM
                 </p>
               </div>
             </div>

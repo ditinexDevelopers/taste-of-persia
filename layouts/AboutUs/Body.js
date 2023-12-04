@@ -21,7 +21,7 @@ const Section = ({ _this }) => {
       <section className="text-blackcenter bg-white sm:mx-24 flex justify-center">
         <div className="container">
           <div className="grid lg:grid-cols-4 md:grid-cols-2 relative md:mt-[-64px]  ">
-            <div className="mb-6 rounded-md shadow-lg shadow-slate-200 p-2 mx-4 w-62 bg-white  transform transition duration-1000 hover:translate-y-10">
+            <div className="mb-6 rounded-md shadow-lg shadow-slate-200 p-2 mx-4 w-62 bg-white  transform transition duration-1000 hover:translate-y-5 flex flex-col items-center justify-center">
               <div className="py-5 mb-8">
                 <img src="images/about1.png" alt="" />
               </div>
@@ -29,7 +29,7 @@ const Section = ({ _this }) => {
               <p className="text-sm m-2.5 mb-8 text-[#2a435d]">Fresh organic food near you.</p>
             </div>
 
-            <div className="mb-6 rounded-md shadow-xl shadow-slate-200 p-2 mx-4 w-62 bg-white  transform transition duration-1000 hover:translate-y-10">
+            <div className="mb-6 rounded-md shadow-xl shadow-slate-200 p-2 mx-4 w-62 bg-white  transform transition duration-1000 hover:translate-y-5 flex flex-col items-center justify-center">
               <div className="py-5 mb-8">
                 <img src="images/about2.png" alt="" />
               </div>
@@ -37,7 +37,7 @@ const Section = ({ _this }) => {
               <p className="text-sm m-2.5 mb-8 text-[#2a435d]">We Provide Best Quality Food</p>
             </div>
 
-            <div className="mb-6 rounded-md shadow-xl shadow-slate-200 p-2 mx-4 w-62 bg-white  transform transition duration-1000 hover:translate-y-10">
+            <div className="mb-6 rounded-md shadow-xl shadow-slate-200 p-2 mx-4 w-62 bg-white  transform transition duration-1000 hover:translate-y-5 flex flex-col items-center justify-center">
               <div className="py-5 mb-8">
                 <img src="images/about3.png" alt="" />
               </div>
@@ -45,12 +45,12 @@ const Section = ({ _this }) => {
               <p className="text-sm m-2.5 mb-8 text-[#2a435d]">100% Money Back Guarantee</p>
             </div>
 
-            <div className="mb-6 rounded-md shadow-xl shadow-slate-200 p-2 mx-4 w-62 bg-white  transform transition duration-1000 hover:translate-y-10">
+            <div className="mb-6 rounded-md shadow-xl shadow-slate-200 p-2 mx-4 w-62 bg-white  transform transition duration-1000 hover:translate-y-5 flex flex-col items-center justify-center">
               <div className="py-5 mb-8">
                 <img src="images/about4.png" alt="" />
               </div>
               <h5 className=" font-bold m-2 text-secondary text-lg">Delicious Food Menu</h5>
-              <p className="text-sm m-2.5 mb-8 text-[#2a435d]">Goodness Provides Best Food</p>
+              <p className="text-sm m-2.5 mb-8 text-[#2a435d]">We Provide Best Food</p>
             </div>
           </div>
         </div>
@@ -79,8 +79,8 @@ const Section = ({ _this }) => {
               <span className="text-secondary font-bold">Hungry People.</span>
             </h4>
             <p className="text-secondary mt-4 text-lg sm:text-left text-center">
-              The Goodness Land is a family owned business located at Overland Rd, Boise. We cook
-              our food with love. You can order your favorite food and pickup when order is ready.{' '}
+              Taste of Persia is a restaurant where you'll get every Afgani food. We cook our food
+              with love. You can order your favorite food and pickup when order is ready.{' '}
             </p>
           </div>
         </div>
