@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Motion, spring } from 'react-motion';
 import PropTypes from 'prop-types';
 import {
   reactToggle,
@@ -213,119 +212,7 @@ export default class ToggleButton extends Component {
 
     const SpringConfig = internalSpringSetting;
     const HoverSpringConfig = internalHoverSpringSetting;
-    return (
-      <Motion
-        style={{
-          opacity: spring(value ? 1 : 0, SpringConfig),
-          left: spring(value ? thumbAnimateRange[1] * 10 : thumbAnimateRange[0] * 10, SpringConfig),
-          colorNumber: spring(value ? 0 : 400, SpringConfig),
-          toggleNumber: spring(value ? 400 : 0, SpringConfig),
-          hoverNumber: spring(this.state.isHover ? 400 : 0, HoverSpringConfig)
-        }}
-      >
-        {({ opacity, left, colorNumber, hoverNumber, toggleNumber }) => (
-          <div
-            style={{
-              ...this.makeStyle({
-                ...reactToggle,
-                ...containerStyle
-              })
-            }}
-            onMouseOver={this.onMouseOver.bind(this)}
-            onMouseOut={this.onMouseOut.bind(this)}
-            onClick={this.handleClick.bind(this)}
-          >
-            <div
-              style={{
-                ...this.makeStyle(
-                  {
-                    ...reactToggleTrack,
-                    ...trackStyle,
-                    ...this.interpolateColorWithHover(colorNumber, 'active', 'inactive'),
-                    ...animateTrackStyleToggle(toggleNumber / 400.0)
-                  },
-                  {
-                    ...trackStyleHover,
-                    ...animateTrackStyleHover(hoverNumber / 400.0)
-                  }
-                )
-              }}
-            >
-              <div
-                style={{
-                  ...this.makeStyle(
-                    {
-                      ...reactToggleOn,
-                      ...activeLabelStyle
-                    },
-                    activeLabelStyleHover
-                  ),
-                  opacity: opacity
-                }}
-              >
-                {activeLabel}
-              </div>
-              <div
-                style={{
-                  ...this.makeStyle(
-                    {
-                      ...reactToggleOff,
-                      ...inactiveLabelStyle
-                    },
-                    inactiveLabelStyleHover
-                  ),
-                  opacity: 1 - opacity
-                }}
-              >
-                {inactiveLabel}
-              </div>
-            </div>
-            <div style={reactThumbCenteringContainer}>
-              <div
-                style={{
-                  ...this.makeStyle(
-                    {
-                      ...reactToggleThumb,
-                      ...thumbStyle,
-                      ...this.interpolateColorWithHover(
-                        colorNumber,
-                        'activeThumb',
-                        'inactiveThumb'
-                      ),
-                      ...animateThumbStyleToggle(toggleNumber / 400.0)
-                    },
-                    {
-                      ...thumbStyleHover,
-                      ...animateThumbStyleHover(hoverNumber / 400.0)
-                    }
-                  ),
-                  position: 'relative',
-                  left: Math.round(left / 10.0)
-                }}
-              >
-                {thumbIcon}
-              </div>
-            </div>
-            <input
-              ref={(c) => {
-                this._input = c;
-              }}
-              type="checkbox"
-              style={reactToggleScreenReaderOnly}
-              onClick={(evt) => {
-                if (onClick) {
-                  onClick(evt);
-                }
-
-                onToggle(value);
-              }}
-              value={value}
-              {...passThroughInputProps}
-            />
-          </div>
-        )}
-      </Motion>
-    );
+    return <></>;
   }
 }
 

@@ -11,4 +11,3 @@ export { default as DashboardContainer } from './DashboardContainer';
 export { default as Modal } from './Modal';
 export { default as Card } from './Card';
 export { default as OrderStatus } from './OrderStatus';
-export { default as ToggleButton } from './ToggleButton';
