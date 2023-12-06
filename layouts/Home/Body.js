@@ -11,8 +11,8 @@ const Section = ({ _this }) => {
     <>
       {/* <CheckoutButton _this={_this} /> */}
       <div className="relative bg-home-bg bg-cover bg-no-repeat bg-center sm:min-h-screen min-h-[500px] min-w-full">
-        <div className="sm:pl-14 h-screen flex items-center sm:items-stretch gap-10 justify-center flex-col">
-          <h4 className="font-montez sm:text-5xl text-2xl text-primarylight mb-2">
+        <div className="sm:pl-20 h-screen flex items-center sm:items-stretch gap-10 justify-center flex-col">
+          <h4 className="tracking-wider font-montez sm:text-5xl text-2xl text-primarylight mb-2">
             Welcome to, Afgan Kitchen
           </h4>
           <h3 className="font-suranna sm:text-6xl text-2xl text-white uppercase ">

@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { Button, ButtonSecondary } from 'components';
 import styles from 'styles/Header.module.css';
 import { useRouter } from 'next/router';
-import { FaShoppingCart } from 'react-icons/fa';
+import { FaBars, FaShoppingCart } from 'react-icons/fa';
 import { useSelector } from 'react-redux';
 import classNames from 'classnames';
 import Image from 'next/image';
@@ -31,7 +31,7 @@ const Component = () => {
   };
 
   const menuClassName =
-    'text-white hover:text-primarylight text-base uppercase cursor-pointer transition-all duration-500';
+    'text-white hover:text-primarylight text-base uppercase cursor-pointer transition-all duration-700';
   const menuActiveClassName = menuClassName + ' text-primarylight';
   const liClassName = 'sm:float-left px-6 py-1';
   return (
@@ -39,11 +39,9 @@ const Component = () => {
       <div className={navStyle}>
         <div className="flex flex-row justify-between max-w-6xl m-auto min-h-[80px] items-center sm:px-0 px-2">
           <Link href={'/'}>
-            <Image
-              src={Logo}
-              height={50}
-              width={120}
-              className="cursor-pointer ml-2 rounded-lg"
+            <img
+              src="/images/logo.png"
+              className="cursor-pointer ml-2 rounded-lg h-16 sm:w-40"
               alt="logo"
             />
           </Link>
@@ -52,9 +50,7 @@ const Component = () => {
             className="float-left py-1 sm:hidden block cursor-pointer"
             onClick={() => setMobileMenu(mobileMenu == 'h-0' ? 'h-auto' : 'h-0')}
           >
-            <div className="bg-primarylight h-[3px] w-[30px] mb-2"></div>
-            <div className="bg-primarylight h-[3px] w-[30px] mb-2"></div>
-            <div className="bg-primarylight h-[3px] w-[30px]"></div>
+            <FaBars className="text-primarylight text-4xl" />
           </div>
           <div
             className={classNames(

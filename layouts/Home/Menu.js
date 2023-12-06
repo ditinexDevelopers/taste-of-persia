@@ -42,7 +42,7 @@ const Section = ({ _this }) => {
   ];
 
   return (
-    <div className="py-4 mb-14" id="menu">
+    <div className="pt-24 pb-4 mb-14" id="menu">
       <h4 className="font-montez sm:text-6xl text-4xl text-secondary tracking-wide text-center">
         Popular Menu
       </h4>

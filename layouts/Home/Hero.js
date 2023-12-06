@@ -19,10 +19,10 @@ const Section = ({ _this }) => {
       </div>
       <div className="flex sm:basis-1/2 items-center justify-center">
         <div className="sm:py-10 py-8 sm:px-0 px-4 max-w-lg">
-          <h4 className="font-montez sm:text-6xl text-4xl text-primary tracking-wide sm:text-left text-center">
+          <h4 className="tracking-wider font-montez sm:text-5xl text-4xl text-primarylight sm:text-left text-center">
             Fresh Taste at a Great Price, only for Hungry People.
           </h4>
-          <p className="text-gray-200 mt-4 text-lg sm:text-left text-center">
+          <p className="text-lightgray mt-8 text-lg sm:text-left text-center">
             Taste of Persia is a restaurant well known for their famous recipes. You can order your
             favourite food and pickup when order is ready.{' '}
           </p>

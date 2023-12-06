@@ -1,7 +1,7 @@
 .headerBgScroll {
-  background-color: #232323;
+  background-color: #231f20;
   /* background-color: rgba(0, 0, 0, 1); */
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -10,13 +10,13 @@
 }
 .headerBgBlack {
   /* background-color: rgba(0, 0, 0, 1); */
-  background-color: #232323;
+  background-color: #231f20;
   transition: all linear 500ms;
 }
 
 @media (min-width: 640px) {
   .headerBgScroll {
-    background-color: #232323;
+    background-color: #231f20;
     position: fixed;
     top: 0;
     left: 0;
@@ -25,7 +25,7 @@
     transition: all linear 500ms;
   }
   .headerBgBlack {
-    background-color: #232323;
+    background-color: #231f20;
     transition: all linear 500ms;
   }
 }
