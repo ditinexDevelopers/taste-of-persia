@@ -9,7 +9,8 @@ const Page = () => {
         <meta name="description" content="The Goodness Land - User SignUp" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <SignUp />
+      {/* <SignUp /> */}
+      <h1>SignUp Page</h1>
     </>
   );
 };

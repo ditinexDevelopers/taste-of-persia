@@ -9,7 +9,8 @@ const Page = () => {
         <meta name="description" content="The Goodness Land - User Cart" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Cart />
+      {/* <Cart /> */}
+      <h1>Cart Page</h1>
     </>
   );
 };

@@ -9,7 +9,8 @@ const Page = () => {
         <meta name="description" content="The Goodness Land - User Dashboard" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Dashboard />
+      {/* <Dashboard /> */}
+      <h1>Dashboard Page</h1>
     </>
   );
 };
