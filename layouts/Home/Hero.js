@@ -3,16 +3,15 @@ import Image from 'next/image';
 
 const Section = ({ _this }) => {
   return (
-    <div className="bg-black sm:flex block flex-row">
+    <div className="bg-primary sm:flex block flex-row md:mx-5 rounded-lg p-1">
       <div className="sm:basis-1/2 sm:py-5 py-2 px-5">
         <div className="sm:h-full h-72 w-full flex justify-center items-center">
-          <div className="relative w-[250px] h-[250px] sm:w-[300px] sm:h-[300px] rounded-full overflow-hidden boxshadow">
+          <div className="relative w-[250px] h-[250px] sm:w-[300px] sm:h-[300px] rounded-full overflow-hidden">
             <Image
-              src="/images/hero.jpg"
+              src="/images/logo.png"
               alt="Middle Eastern Food"
               layout="fill"
-              objectFit="cover"
-              objectPosition={'center'}
+              objectFit="contain"
             />
           </div>
         </div>

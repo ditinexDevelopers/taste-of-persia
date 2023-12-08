@@ -6,8 +6,8 @@ module.exports = {
   ],
   theme: {
     fontFamily: {
-      suranna: ['Suranna', 'serif'],
-      montez: ['Montez', 'cursive']
+      suranna: ['Roboto Flex', 'serif'],
+      montez: ['Caveat', 'cursive']
     },
     extend: {
       colors: {

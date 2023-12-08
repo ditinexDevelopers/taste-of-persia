@@ -1,6 +1,12 @@
 import React from 'react';
 import Image from 'next/image';
 import { SpoonIcon, Button, ButtonSecondary } from 'components';
+import {
+  MdOutlineFastfood,
+  MdOutlineFoodBank,
+  MdOutlineSupervisedUserCircle
+} from 'react-icons/md';
+
 import classNames from 'classnames';
 import Config from 'config';
 import { useRouter } from 'next/router';
@@ -10,7 +16,7 @@ const Section = ({ _this }) => {
 
   const menus = [
     {
-      img: require('public/images/bolani.jpg'),
+      img: '/images/bolani.jpg',
       name: 'Bolani',
       description: `Fried flatbread filled with your choice of veggie,
       potato, or butter squash with a side of chutney
@@ -18,21 +24,21 @@ const Section = ({ _this }) => {
       price: '9.99'
     },
     {
-      img: require('public/images/shami_kabab.webp'),
+      img: '/images/shami_kabab.webp',
       name: 'Shami Kabob',
       description: `Marinated mixed ground meat (beef & lamb) with basmati rice
       and house salad.`,
       price: '22.99'
     },
     {
-      img: require('public/images/chicken_biryani.jpg'),
+      img: '/images/chicken_biryani.jpg',
       name: 'Chicken Biryani',
       description: `Steamed basmati rice with marinated chicken and traditional
       Afghan hot spices. Only available on Friday, Saturday and Sunday`,
       price: '20.99'
     },
     {
-      img: require('public/images/mantu.jpeg'),
+      img: '/images/mantu.jpeg',
       name: 'Mantu',
       description: `Steamed dumplings filled with ground beef and onions topped
       with chaka (traditional yogurt sauce), tomato sauce and
@@ -42,17 +48,38 @@ const Section = ({ _this }) => {
   ];
 
   return (
-    <div className="pt-24 pb-4 mb-14" id="menu">
-      <h4 className="font-montez sm:text-6xl text-4xl text-secondary tracking-wide text-center">
-        Popular Menu
+    <div className="bg-[#101010] py-20 px-3 md:px-16 pb-4" id="menu">
+      <h4 className="font-montez sm:text-6xl text-4xl text-primarylight tracking-wide">
+        Today's Menu
       </h4>
-      <div className="flex justify-center items-center">
+      {/* <div className="flex justify-center items-center">
         <div className="flex relative w-[22em] justify-center items-center">
-          <span className="hr-double-left after:bg-secondary before:bg-secondary"></span>
-          <SpoonIcon color="#2a435d" className="w-[3em] h-[3em] relative top-2" />
-          <span className="hr-double-right after:bg-secondary before:bg-secondary"></span>
+          <span className="hr-double-left after:bg-primarylight before:bg-primarylight"></span>
+          <SpoonIcon color="yellow" className="w-[3em] h-[3em] relative top-2" />
+          <span className="hr-double-right after:bg-primarylight before:bg-primarylight"></span>
+        </div>
+      </div> */}
+
+      <div className="flex items-center justify-between py-5 flex-wrap">
+        <div className="cursor-pointer py-5 px-8 bg-primary hover:bg-black flex items-stretch flex-col gap-5 w-40 md:w-60 rounded transition my-3">
+          <MdOutlineFastfood className="text-red-400 text-4xl" />
+          <h4 className="font-suranna text-xl text-red-200">Appetizers</h4>
+        </div>
+        <div className="cursor-pointer py-5 px-8 bg-primary hover:bg-black flex items-stretch flex-col gap-5 w-40  md:w-60 rounded transition my-3">
+          <MdOutlineSupervisedUserCircle className="text-red-400 text-4xl" />
+          <h4 className="font-suranna text-xl text-red-200">Kabob</h4>
+        </div>
+        <div className="cursor-pointer py-5 px-8 bg-primary hover:bg-black flex items-stretch flex-col gap-5 w-40 md:w-60 rounded transition my-3">
+          <MdOutlineFoodBank className="text-red-400 text-4xl" />
+          <h4 className="font-suranna text-xl text-red-200">Traditional</h4>
+        </div>
+
+        <div className="cursor-pointer py-5 px-8 bg-primary hover:bg-black flex items-stretch flex-col gap-5 w-40 md:w-60 rounded transition my-3">
+          <MdOutlineFastfood className="text-red-400 text-4xl" />
+          <h4 className="font-suranna text-xl text-red-200">Desserts</h4>
         </div>
       </div>
+
       {/* MENU Category */}
       {/* <div className="flex flex-row flex-wrap justify-center items-center my-4 max-w-7xl m-auto">
         <div
@@ -84,40 +111,24 @@ const Section = ({ _this }) => {
         })}
       </div> */}
       {/* MENU Items */}
-      <div className="flex flex-row flex-wrap justify-center items-center my-4">
+      <div className="flex flex-row flex-wrap justify-between items-stretch my-4 gap-5 mb-12">
         {menus?.map((item, index) => {
           return (
             <div
               key={index}
-              className="flex flex-col justify-between w-[250px] h-[380px] border-borderlight border rounded-md m-3 overflow-hidden"
+              className="flex xs:flex-col xs:w-auto mx-auto w-11/12 items-stretch lg:w-[450px] sm:h-[200px] bg-primary rounded-lg p-1"
             >
-              <div className="flex flex-col justify-start items-center">
-                <div className="bg-borderlight w-full p-1">
-                  <div className="w-full h-[150px] relative rounded-md overflow-hidden m-auto">
-                    <Image
-                      // src={Config.STORAGE_URL + item.image}
-                      src={item.img}
-                      alt={item.name}
-                      layout="fill"
-                      objectFit="cover"
-                      objectPosition={'center'}
-                    />
-                  </div>
+              <img
+                className="xs:w-full xs:h-[200px] w-1/3 aspect-square object-cover"
+                src={item.img}
+                alt={item.name}
+              />
+              <div className="xs:p-2 xs:mt-3 p-5">
+                <div className="flex items-center justify-between mb-5">
+                  <h4 className="text-2xl text-red-300">{item.name}</h4>
+                  <h5 className="text-lg text-red-300">$ {item.price}</h5>
                 </div>
-                <h2 className="text-2xl text-secondary pt-3 pb-2 text-center">{item.name}</h2>
-                <p className="text-sm text-secondarylight text-center px-2">{item.description}</p>
-              </div>
-
-              <div className="relative">
-                <h5 className="absolute text-sm text-white font-bold bg-secondary border-2 border-white w-16 h-16 rounded-full flex justify-center items-center -top-8 right-2">
-                  $ {item.price}
-                </h5>
-
-                <ButtonSecondary
-                  className="rounded-none rounded-b-md"
-                  label="ADD TO CART"
-                  onClick={() => _this.addToCart(item)}
-                />
+                <p className="text-base text-gray-300">{item.description}</p>
               </div>
             </div>
           );

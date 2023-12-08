@@ -8,7 +8,7 @@ import CheckoutButton from './CheckoutButton';
 
 const Section = ({ _this }) => {
   return (
-    <>
+    <div className="bg-[#101010]">
       {/* <CheckoutButton _this={_this} /> */}
       <div className="relative bg-home-bg bg-cover bg-no-repeat bg-center sm:min-h-screen min-h-[500px] min-w-full">
         <div className="sm:pl-20 h-screen flex items-center sm:items-stretch gap-10 justify-center flex-col">
@@ -29,7 +29,7 @@ const Section = ({ _this }) => {
       <Hero />
       <Menu _this={_this} />
       <Hero2 />
-    </>
+    </div>
   );
 };
 
