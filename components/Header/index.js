@@ -7,7 +7,6 @@ import { FaBars, FaShoppingCart } from 'react-icons/fa';
 import { useSelector } from 'react-redux';
 import classNames from 'classnames';
 import Image from 'next/image';
-import Logo from '../../public/images/logo.png';
 
 const Component = () => {
   const router = useRouter();
@@ -40,8 +39,8 @@ const Component = () => {
         <div className="flex flex-row justify-between max-w-6xl m-auto min-h-[80px] items-center sm:px-0 px-2">
           <Link href={'/'}>
             <img
-              src="/images/logo.png"
-              className="cursor-pointer ml-2 rounded-lg h-16 sm:w-40"
+              src="/images/small_logo.png"
+              className="cursor-pointer rounded-lg h-16 w-24"
               alt="logo"
             />
           </Link>

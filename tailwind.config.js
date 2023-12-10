@@ -25,11 +25,14 @@ module.exports = {
         'blue-700': '#1976d2',
         'blue-500': '#2196f3'
       },
+      animation: {
+        'spin-slow': 'spin 6s linear infinite'
+      },
       backgroundImage: {
-        'home-bg': "url('/images/heroBg.jpg')",
+        'home-bg': "url('/images/hero-bg.jpg')",
         'mbhome-bg': "url('/images/heroMobileBg.jpg')",
         'home-bg-overlay': "url('/images/slide01-overlay.png')",
-        'hero-bg': "url('/images/hero2.jpg')"
+        'hero-bg': "url('/images/service.jpg')"
       },
       screens: {
         xs: { max: '515px' }

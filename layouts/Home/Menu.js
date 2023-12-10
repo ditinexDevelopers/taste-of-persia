@@ -49,16 +49,16 @@ const Section = ({ _this }) => {
 
   return (
     <div className="bg-[#101010] py-20 px-3 md:px-16 pb-4" id="menu">
-      <h4 className="font-montez sm:text-6xl text-4xl text-primarylight tracking-wide">
+      <h4 className="font-montez sm:text-6xl text-4xl text-primarylight tracking-wide text-center">
         Today's Menu
       </h4>
-      {/* <div className="flex justify-center items-center">
+      <div className="flex justify-center items-center">
         <div className="flex relative w-[22em] justify-center items-center">
           <span className="hr-double-left after:bg-primarylight before:bg-primarylight"></span>
           <SpoonIcon color="yellow" className="w-[3em] h-[3em] relative top-2" />
           <span className="hr-double-right after:bg-primarylight before:bg-primarylight"></span>
         </div>
-      </div> */}
+      </div>
 
       <div className="flex items-center justify-between py-5 flex-wrap">
         <div className="cursor-pointer py-5 px-8 bg-primary hover:bg-black flex items-stretch flex-col gap-5 w-40 md:w-60 rounded transition my-3">
