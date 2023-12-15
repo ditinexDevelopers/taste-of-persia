@@ -32,6 +32,7 @@ yarn dev
 forever start -c "npm start" --uid "frontend" --sourceDir "/home/goodness/the-goodness-land/" ./
 # start pm2
 pm2 start npm --name "frontend" -- start
+mongodb://thetasteofpersia:8gJq2nXAQr9u@208.109.35.88:27017
 ```
 
 ## Reference Links
