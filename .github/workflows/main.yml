@@ -42,6 +42,6 @@ jobs:
 
       - name: Deploying into server
         run: |
-          ssh staging 'cd /home/goodness/the-goodness-land && git reset --hard && git pull origin main && npm install'
-          ssh staging 'cd /home/goodness/the-goodness-land/NodeJSRestAPI && npm install && npm run migrate && pm2 restart all'
+          ssh staging 'cd /home/ubuntu/taste-of-persia && git reset --hard && git pull origin main && npm install && npm run build'
+          ssh staging 'cd /home/ubuntu/taste-of-persia/NodeJSRestAPI && npm install && pm2 restart all'
       - run: echo "🎉 Deployed successfully."
