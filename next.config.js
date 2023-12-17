@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: false,
   images: {
-    domains: ['localhost', 'api.goodnesslandboise.com']
+    domains: ['localhost', 'api.thetasteofpersia.com']
   }
 };
 

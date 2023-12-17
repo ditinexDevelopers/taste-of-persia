@@ -13,6 +13,8 @@ const Index = () => {
   const [menus, setMenus] = useState([]);
   const { cart } = useSelector((state) => state.cart);
 
+  // console.log('menu', menus);
+
   const addToCart = (i) => {
     toast.success('Item Added To Cart.');
     const value = { ...i, quantity: 1 };

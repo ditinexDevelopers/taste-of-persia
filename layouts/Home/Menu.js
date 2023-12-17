@@ -1,11 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { SpoonIcon, Button, ButtonSecondary } from 'components';
-import {
-  MdOutlineFastfood,
-  MdOutlineFoodBank,
-  MdOutlineSupervisedUserCircle
-} from 'react-icons/md';
+import { MdOutlineFoodBank } from 'react-icons/md';
 
 import classNames from 'classnames';
 import Config from 'config';
@@ -14,38 +10,18 @@ import { useRouter } from 'next/router';
 const Section = ({ _this }) => {
   const router = useRouter();
 
-  const menus = [
-    {
-      img: '/images/bolani.jpg',
-      name: 'Bolani',
-      description: `Fried flatbread filled with your choice of veggie,
-      potato, or butter squash with a side of chutney
-      (traditional spicy sauce)`,
-      price: '9.99'
-    },
-    {
-      img: '/images/shami_kabab.webp',
-      name: 'Shami Kabob',
-      description: `Marinated mixed ground meat (beef & lamb) with basmati rice
-      and house salad.`,
-      price: '22.99'
-    },
-    {
-      img: '/images/chicken_biryani.jpg',
-      name: 'Chicken Biryani',
-      description: `Steamed basmati rice with marinated chicken and traditional
-      Afghan hot spices. Only available on Friday, Saturday and Sunday`,
-      price: '20.99'
-    },
-    {
-      img: '/images/mantu.jpeg',
-      name: 'Mantu',
-      description: `Steamed dumplings filled with ground beef and onions topped
-      with chaka (traditional yogurt sauce), tomato sauce and
-      sprinkled with dried mint.`,
-      price: '20.99'
-    }
-  ];
+  const CatIcon = {
+    ALL: '/images/category/all.png',
+    APPETIZERS: '/images/category/appetizer.png',
+    SOUPS: '/images/category/soup.png',
+    'KABOB PLATES': '/images/category/kabob.png',
+    'TRADITIONAL MEAL PLATES': '/images/category/traditional.png',
+    'MEAL PLATTERS': '/images/category/meal.png',
+    'KIDS MEAL': '/images/category/kids.png',
+    DRINKS: '/images/category/drinks.png',
+    SIDES: '/images/category/sides.png',
+    DESSERTS: '/images/category/desserts.png'
+  };
 
   return (
     <div className="bg-[#101010] py-20 px-3 md:px-16 pb-4" id="menu">
@@ -60,75 +36,56 @@ const Section = ({ _this }) => {
         </div>
       </div>
 
-      <div className="flex items-center justify-between py-5 flex-wrap">
-        <div className="cursor-pointer py-5 px-8 bg-primary hover:bg-black flex items-stretch flex-col gap-5 w-40 md:w-60 rounded transition my-3">
-          <MdOutlineFastfood className="text-red-400 text-4xl" />
-          <h4 className="font-suranna text-xl text-red-200">Appetizers</h4>
-        </div>
-        <div className="cursor-pointer py-5 px-8 bg-primary hover:bg-black flex items-stretch flex-col gap-5 w-40  md:w-60 rounded transition my-3">
-          <MdOutlineSupervisedUserCircle className="text-red-400 text-4xl" />
-          <h4 className="font-suranna text-xl text-red-200">Kabob</h4>
-        </div>
-        <div className="cursor-pointer py-5 px-8 bg-primary hover:bg-black flex items-stretch flex-col gap-5 w-40 md:w-60 rounded transition my-3">
-          <MdOutlineFoodBank className="text-red-400 text-4xl" />
-          <h4 className="font-suranna text-xl text-red-200">Traditional</h4>
-        </div>
-
-        <div className="cursor-pointer py-5 px-8 bg-primary hover:bg-black flex items-stretch flex-col gap-5 w-40 md:w-60 rounded transition my-3">
-          <MdOutlineFastfood className="text-red-400 text-4xl" />
-          <h4 className="font-suranna text-xl text-red-200">Desserts</h4>
-        </div>
-      </div>
-
       {/* MENU Category */}
-      {/* <div className="flex flex-row flex-wrap justify-center items-center my-4 max-w-7xl m-auto">
+      <div className="flex flex-row flex-wrap justify-evenly items-center my-4 max-w-7xl m-auto">
         <div
           onClick={() => _this.setSelectedCategory('')}
-          className={classNames(
-            _this.selectedCategory == ''
-              ? 'text-primarylight bg-secondary'
-              : 'text-secondary bg-transparent',
-            'flex justify-center items-center w-40 h-24 border-borderlight border rounded-md m-3 cursor-pointer text-xl font-medium hover:text-primarylight hover:bg-secondary transition-all duration-300 font-suranna tracking-wider'
-          )}
+          className={`cursor-pointer py-5 px-8 ${
+            _this.selectedCategory == '' ? 'bg-black' : 'bg-primary'
+          } hover:bg-black flex items-stretch flex-col gap-5 w-40 md:w-60 rounded transition m-3`}
         >
-          All
+          <img className="h-10 w-10 invert-[75%]" src={CatIcon.ALL} alt="icon" />
+          <h4 className="font-suranna text-xl text-red-200">All</h4>
         </div>
         {_this.categories?.map((item, index) => {
           return (
             <div
               onClick={() => _this.setSelectedCategory(item._id)}
               key={index}
-              className={classNames(
-                item._id == _this.selectedCategory
-                  ? 'text-primarylight bg-secondary'
-                  : 'text-secondary bg-transparent',
-                'flex justify-center items-center w-40 h-24 border-borderlight border rounded-md m-3 cursor-pointer text-xl font-medium hover:text-primarylight hover:bg-secondary transition-all duration-300 font-suranna tracking-wider'
-              )}
+              className={`cursor-pointer py-5 px-8 ${
+                _this.selectedCategory == item._id ? 'bg-black' : 'bg-primary'
+              } hover:bg-black flex items-stretch flex-col gap-5 w-40 md:min-w-[15rem] rounded transition m-3`}
             >
-              {item.name}
+              {/* <MdOutlineFastfood className="text-red-400 text-4xl" /> */}
+              <img className="h-10 w-10 invert-[75%]" src={CatIcon[`${item.name}`]} alt="icon" />
+              <h4 className="font-suranna text-xl text-red-200">{item.name}</h4>
             </div>
           );
         })}
-      </div> */}
+      </div>
+
       {/* MENU Items */}
       <div className="flex flex-row flex-wrap justify-between items-stretch my-4 gap-5 mb-12">
-        {menus?.map((item, index) => {
+        {_this.menus?.map((item, index) => {
           return (
             <div
               key={index}
-              className="flex xs:flex-col xs:w-auto mx-auto w-11/12 items-stretch lg:w-[450px] sm:h-[200px] bg-primary rounded-lg p-1"
+              className="flex xs:flex-col xs:w-[90%] xs:min-h-[28rem] mx-auto w-11/12 items-stretch lg:w-[450px] sm:h-[220px] bg-primary rounded-lg p-1"
             >
               <img
-                className="xs:w-full xs:h-[200px] w-1/3 aspect-square object-cover"
-                src={item.img}
+                className="xs:w-full xs:h-[200px] w-1/3 aspect-square object-cover rounded-lg"
+                src={Config.STORAGE_URL + item.image}
                 alt={item.name}
               />
-              <div className="xs:p-2 xs:mt-3 p-5">
-                <div className="flex items-center justify-between mb-5">
-                  <h4 className="text-2xl text-red-300">{item.name}</h4>
+              <div className="relative xs:p-2 xs:mt-3 p-5 flex-grow">
+                <h4 className="text-2xl text-red-300">{item.name}</h4>
+                <p className="text-base text-gray-300 my-3">{item.description}</p>
+                <div className="absolute bottom-1 flex items-center justify-between w-11/12">
                   <h5 className="text-lg text-red-300">$ {item.price}</h5>
+                  <button className="ml-6 px-5 py-1.5 rounded text-white bg-red-800 font-medium text-base cursor-pointer hover:bg-red-700 transition">
+                    Add to Cart
+                  </button>
                 </div>
-                <p className="text-base text-gray-300">{item.description}</p>
               </div>
             </div>
           );
