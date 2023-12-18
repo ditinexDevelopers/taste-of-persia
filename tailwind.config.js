@@ -29,7 +29,7 @@ module.exports = {
         'spin-slow': 'spin 6s linear infinite'
       },
       backgroundImage: {
-        'home-bg': "url('/images/hero-bg.jpg')",
+        'home-bg': "url('/images/banner.png')",
         'mbhome-bg': "url('/images/heroMobileBg.jpg')",
         'home-bg-overlay': "url('/images/slide01-overlay.png')",
         'hero-bg': "url('/images/service.jpg')"

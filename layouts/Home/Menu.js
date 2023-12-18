@@ -42,10 +42,10 @@ const Section = ({ _this }) => {
           onClick={() => _this.setSelectedCategory('')}
           className={`cursor-pointer py-5 px-8 ${
             _this.selectedCategory == '' ? 'bg-black' : 'bg-primary'
-          } hover:bg-black flex items-stretch flex-col gap-5 w-40 md:w-60 rounded transition m-3`}
+          } hover:bg-black flex items-center flex-row gap-5 rounded transition m-3`}
         >
-          <img className="h-10 w-10 invert-[75%]" src={CatIcon.ALL} alt="icon" />
-          <h4 className="font-suranna text-xl text-red-200">All</h4>
+          <img className="h-8 w-8 invert-[75%]" src={CatIcon.ALL} alt="icon" />
+          <h4 className="font-suranna text-lg text-red-200">All</h4>
         </div>
         {_this.categories?.map((item, index) => {
           return (
@@ -54,11 +54,10 @@ const Section = ({ _this }) => {
               key={index}
               className={`cursor-pointer py-5 px-8 ${
                 _this.selectedCategory == item._id ? 'bg-black' : 'bg-primary'
-              } hover:bg-black flex items-stretch flex-col gap-5 w-40 md:min-w-[15rem] rounded transition m-3`}
+              } hover:bg-black flex items-center flex-row gap-5 rounded transition m-3`}
             >
-              {/* <MdOutlineFastfood className="text-red-400 text-4xl" /> */}
-              <img className="h-10 w-10 invert-[75%]" src={CatIcon[`${item.name}`]} alt="icon" />
-              <h4 className="font-suranna text-xl text-red-200">{item.name}</h4>
+              <img className="h-8 w-8 invert-[75%]" src={CatIcon[`${item.name}`]} alt="icon" />
+              <h4 className="font-suranna text-lg text-red-200">{item.name}</h4>
             </div>
           );
         })}
@@ -70,7 +69,7 @@ const Section = ({ _this }) => {
           return (
             <div
               key={index}
-              className="flex xs:flex-col xs:w-[90%] xs:min-h-[28rem] mx-auto w-11/12 items-stretch lg:w-[450px] sm:h-[220px] bg-primary rounded-lg p-1"
+              className="flex xs:flex-col xs:w-[95%] xs:min-h-[28rem] mx-auto w-11/12 items-stretch lg:w-[450px] xl:w-[500px] sm:h-[220px] bg-primary rounded-lg p-1"
             >
               <img
                 className="xs:w-full xs:h-[200px] w-1/3 aspect-square object-cover rounded-lg"
