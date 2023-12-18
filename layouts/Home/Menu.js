@@ -72,7 +72,7 @@ const Section = ({ _this }) => {
               className="flex xs:flex-col xs:w-[95%] xs:min-h-[28rem] mx-auto w-11/12 items-stretch lg:w-[450px] xl:w-[500px] sm:h-[220px] bg-primary rounded-lg p-1"
             >
               <img
-                className="xs:w-full xs:h-[200px] w-1/3 aspect-square object-cover rounded-lg"
+                className="xs:w-full xs:h-[200px] w-44 aspect-square object-cover rounded-lg"
                 src={Config.STORAGE_URL + item.image}
                 alt={item.name}
               />
