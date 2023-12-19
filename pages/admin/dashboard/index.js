@@ -5,8 +5,8 @@ const Index = () => {
   return (
     <>
       <Head>
-        <title>The Goodness Land - Admin Dashboard</title>
-        <meta name="description" content="The Goodness Land - Admin Dashboard" />
+        <title>Taste of Persia - Admin Dashboard</title>
+        <meta name="description" content="Taste of Persia - Admin Dashboard" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Dashboard />

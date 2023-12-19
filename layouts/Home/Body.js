@@ -9,7 +9,7 @@ import CheckoutButton from './CheckoutButton';
 const Section = ({ _this }) => {
   return (
     <div className="bg-[#101010]">
-      {/* <CheckoutButton _this={_this} /> */}
+      <CheckoutButton _this={_this} />
       <div className="sm:mt-6 relative bg-home-bg bg-cover bg-no-repeat bg-center sm:min-h-screen min-h-[500px] min-w-full">
         <div className="sm:pl-20 h-screen flex items-center sm:items-stretch gap-10 justify-center flex-col">
           <h4 className="tracking-wider font-montez sm:text-5xl text-2xl text-primarylight mb-2">

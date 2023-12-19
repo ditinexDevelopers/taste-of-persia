@@ -11,14 +11,14 @@ const Section = ({ _this }) => {
   const router = useRouter();
 
   return (
-    <div className="bg-bgcolor">
+    <div className="bg-black">
       <div className="relative bg-home-bg fullbgsize bg-no-repeat bg-top min-h-[80px] min-w-full"></div>
       {_this.isResturantClosed && (
         <div className="px-2 py-2 m-2 text-center bg-red-200 rounded-md border-red-500 text-red-500 font-bold text-base">
           We are closed today. Please come back during opening hours.
         </div>
       )}
-      <div className="flex sm:flex-row flex-col my-2">
+      <div className="flex sm:flex-row flex-col py-4">
         <div className="flex flex-1 px-2 py-2">
           <Card
             title={`Order Summary ${_this.cartCount > 0 ? '( ' + _this.cartCount + ' )' : ''}`}
@@ -80,7 +80,7 @@ const Section = ({ _this }) => {
                             className="text-red-500 inline-flex flex-row items-center text-sm cursor-pointer hover:underline mt-1"
                             onClick={() => _this.dispatch(_this.removeItem(item._id))}
                           >
-                            <MdCancel /> Remove
+                            <MdCancel className="mr-1" /> Remove
                           </div>
                         </div>
                       </div>

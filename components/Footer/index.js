@@ -18,7 +18,7 @@ const Component = () => {
       <div className="mx-15 py-10 text-center md:text-left">
         <div className="grid grid-1 md:grid-cols-2 lg:grid-cols-4 justify-items-center gap-2">
           <div className="mb-5 lg:mb-0">
-            <img src="./images/logo.png" alt="logo" className="h-24 w-48" />
+            <img src="/images/logo.png" alt="logo" className="h-24 w-48" />
             <div className="flex items-center gap-8 mt-4">
               <AiOutlineTwitter className="text-lightgray text-2xl hover:text-primarylight transition cursor-pointer" />
               <AiOutlineFacebook className="text-lightgray text-2xl hover:text-primarylight transition cursor-pointer" />

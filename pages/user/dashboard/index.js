@@ -5,12 +5,11 @@ const Page = () => {
   return (
     <>
       <Head>
-        <title>The Goodness Land - User Dashboard</title>
+        <title>Taste of Persia - User Dashboard</title>
         <meta name="description" content="The Goodness Land - User Dashboard" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      {/* <Dashboard /> */}
-      <h1>Dashboard Page</h1>
+      <Dashboard />
     </>
   );
 };

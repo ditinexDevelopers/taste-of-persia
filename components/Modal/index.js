@@ -37,11 +37,11 @@ const Component = ({
     >
       <div
         className={classNames(
-          'relative mx-2 max-w-full border-0 rounded-lg shadow-lg flex flex-col bg-white outline-none focus:outline-none p-3',
+          'relative mx-2 max-w-full border-0 rounded-lg shadow-lg flex flex-col bg-white outline-none focus:outline-none p-6',
           width
         )}
       >
-        <span className="absolute top-0 right-0 cursor-pointer" onClick={onClose}>
+        <span className="absolute top-1 right-1 cursor-pointer" onClick={onClose}>
           <MdCancel size={20} />
         </span>
         {children}

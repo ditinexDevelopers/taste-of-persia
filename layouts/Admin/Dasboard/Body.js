@@ -19,7 +19,7 @@ const Section = ({ _this }) => {
       >
         {moment().format('YYYY/MM/DD')} - {moment().format('dddd')}
         <span className="cursor-pointer">
-          <ToggleButton
+          {/* <ToggleButton
             inactiveLabel={'Closed'}
             activeLabel={'Open'}
             colors={{
@@ -34,7 +34,7 @@ const Section = ({ _this }) => {
             }}
             value={!_this.isResturantClosed}
             onToggle={() => _this.onToggle()}
-          />
+          /> */}
         </span>
       </div>
 

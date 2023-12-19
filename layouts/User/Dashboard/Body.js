@@ -13,9 +13,9 @@ const Section = ({ _this }) => {
 
   return (
     <>
-      <div className="bg-bgcolor">
+      <div className="bg-black">
         <div className="relative bg-home-bg fullbgsize bg-no-repeat bg-top min-h-[80px] min-w-full"></div>
-        <div className="flex lg:flex-row flex-col my-2">
+        <div className="flex lg:flex-row flex-col py-2">
           <div className="flex flex-initial lg:w-2/3 px-2 py-2">
             <Orders _this={_this} />
           </div>
