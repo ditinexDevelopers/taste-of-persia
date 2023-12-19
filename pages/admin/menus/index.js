@@ -5,7 +5,7 @@ const Index = () => {
   return (
     <>
       <Head>
-        <title>The Goodness Land - Admin Menus</title>
+        <title>Taste of Persia - Admin Menus</title>
         <meta name="description" content="Royal Plate app" />
         <link rel="icon" href="/favicon.ico" />
       </Head>

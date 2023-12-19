@@ -24,12 +24,12 @@ const Component = () => {
           ></div>
           <div className="brandsection shrink-0">
             <div className="flex items-center gap-4">
-              <div className="shrink-0">
-                <img src="/favicon.ico" className="rounded-full w-8" alt="Avatar" />
+              <div className="">
+                <img src="/images/small_logo.png" className="rounded-full w-8" alt="Avatar" />
               </div>
               <div className="grow hidden md:block">
                 <a onClick={() => router.push('/')}>
-                  <p className="text-2xl font-bold text-white cursor-pointer">THE GOODNESS LAND</p>{' '}
+                  <p className="text-2xl font-bold text-white cursor-pointer">Taste of Persia</p>{' '}
                 </a>
               </div>
             </div>
@@ -45,7 +45,7 @@ const Component = () => {
                 <div className="w-fit" onClick={() => setShowdropdown(!showdropdown)}>
                   <img
                     src="/images/avatar.png"
-                    className="rounded-full w-8 hover:border border-primary duration-75"
+                    className="cursor-pointer rounded-full w-8 hover:border border-primary duration-75"
                     alt="Avatar"
                   />
                 </div>

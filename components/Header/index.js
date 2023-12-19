@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { Button, ButtonSecondary } from 'components';
 import styles from 'styles/Header.module.css';
 import { useRouter } from 'next/router';
-import { FaBars, FaShoppingCart } from 'react-icons/fa';
+import { FaBars, FaRegUserCircle, FaShoppingCart } from 'react-icons/fa';
 import { useSelector } from 'react-redux';
 import classNames from 'classnames';
 import Image from 'next/image';
@@ -53,7 +53,7 @@ const Component = () => {
           </div>
           <div
             className={classNames(
-              'sm:static absolute overflow-hidden top-20 left-0 sm:bg-transparent bg-black sm:w-auto w-full transition-all duration-500 sm:h-auto z-50',
+              'sm:static absolute overflow-hidden sm:overflow-visible top-20 left-0 sm:bg-transparent bg-black sm:w-auto w-full transition-all duration-500 sm:h-auto z-50',
               mobileMenu
             )}
           >
@@ -88,26 +88,31 @@ const Component = () => {
                   </span>
                 </Link>
               </li>
+
+              <div className="flex flex-col sm:flex-row sm:items-center px-6 sm:px-0 gap-4 sm:gap-0">
+                {userSession === null ? (
+                  <li className={liClassName}>
+                    <Link href="/user/login">
+                      <span className={menuClassName}>Login</span>
+                    </Link>
+                  </li>
+                ) : (
+                  <Link href="/user/dashboard">
+                    <FaRegUserCircle className="text-buttonbg hover:text-primarylight transition cursor-pointer mr-6 text-3xl" />
+                  </Link>
+                )}
+                <div className="relative mr-6">
+                  <span className="h-6 w-6 text-center rounded-full text-white bg-red-700 absolute ml-8 -mt-3">
+                    {cart.length}
+                  </span>
+                  <FaShoppingCart
+                    className=" fill-buttonbg h-8 w-8 hover:fill-primarylight cursor-pointer"
+                    onClick={() => router.push('/user/cart')}
+                  />
+                </div>
+              </div>
             </ul>
           </div>
-
-          {/* <div className="flex items-center">
-            <div className="relative">
-              <span className="h-6 w-6 text-center rounded-full text-white bg-red-700 absolute overflow-hidden ml-8 mt-[-12px]">
-                {cart.length}
-              </span>
-              <FaShoppingCart
-                className=" fill-buttonbg h-10 w-12 mr-10 hover:fill-primarylight cursor-pointer"
-                onClick={() => router.push('/user/cart')}
-              />
-            </div>
-
-            {userSession === null ? (
-              <ButtonSecondary onClick={() => router.push('/user/login')} label="Login" />
-            ) : (
-              <ButtonSecondary onClick={() => router.push('/user/dashboard')} label="My Account" />
-            )}
-          </div> */}
         </div>
       </div>
     </header>

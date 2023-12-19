@@ -59,7 +59,7 @@ const WrappingContainer = ({ Component, pageProps }) => {
   return (
     <>
       {isLoading && <Loader />}
-      {/* <ToastContainer
+      <ToastContainer
         position="bottom-center"
         autoClose={3000}
         hideProgressBar={false}
@@ -69,7 +69,7 @@ const WrappingContainer = ({ Component, pageProps }) => {
         pauseOnFocusLoss={false}
         draggable
         pauseOnHover
-      /> */}
+      />
       <Component {...pageProps} />
     </>
   );

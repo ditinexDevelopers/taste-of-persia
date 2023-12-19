@@ -9,6 +9,7 @@ import { useRouter } from 'next/router';
 
 const Section = ({ _this }) => {
   const router = useRouter();
+  // console.log('menu', _this.menus);
 
   const CatIcon = {
     ALL: '/images/category/all.png',
@@ -81,7 +82,10 @@ const Section = ({ _this }) => {
                 <p className="text-base text-gray-300 my-3">{item.description}</p>
                 <div className="absolute bottom-1 flex items-center justify-between w-11/12">
                   <h5 className="text-lg text-red-300">$ {item.price}</h5>
-                  <button className="ml-6 px-5 py-1.5 rounded text-white bg-red-800 font-medium text-base cursor-pointer hover:bg-red-700 transition">
+                  <button
+                    onClick={() => _this.addToCart(item)}
+                    className="ml-6 px-5 py-1.5 rounded text-white bg-red-800 font-medium text-base cursor-pointer hover:bg-red-700 transition"
+                  >
                     Add to Cart
                   </button>
                 </div>

@@ -5,10 +5,10 @@ import { ButtonSecondary } from 'components';
 const Section = ({ _this }) => {
   return (
     <div>
-      <div className="relative flex flex-col justify-center min-h-screen overflow-hidden">
-        <div className="w-full p-6 m-auto bg-white border-t-4 border-secondary rounded-md shadow-md border-top lg:max-w-md">
-          <h1 className="font-Suranna sm:text-3xl text-2xl text-secondary uppercase mb-6 text-center">
-            The Goodness Land
+      <div className="relative flex flex-col justify-center min-h-screen overflow-hidden bg-primary">
+        <div className="w-full p-6 m-auto bg-white border-t-4 border-primarylight rounded-md shadow-md border-top lg:max-w-md">
+          <h1 className="font-Suranna sm:text-3xl text-2xl text-secondary mb-6 text-center">
+            Taste of Persia
           </h1>
           <form className="mt-6">
             <div>
@@ -40,7 +40,7 @@ const Section = ({ _this }) => {
               </a>
               <div className="mt-6">
                 <ButtonSecondary
-                  label="LOGIN"
+                  label="Login"
                   style={{ borderRadius: '6px' }}
                   onClick={(e) => _this.onLogin(e)}
                 />
