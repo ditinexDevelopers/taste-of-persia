@@ -6,7 +6,7 @@ const Section = ({ _this }) => {
   return (
     <div>
       <div className="relative flex flex-col justify-center min-h-screen overflow-hidden bg-primary">
-        <div className="w-full p-6 m-auto bg-white border-t-4 border-primarylight rounded-md shadow-md border-top lg:max-w-md">
+        <div className="w-11/12 p-6 m-auto bg-white border-t-4 border-primarylight rounded-md shadow-md border-top sm:max-w-md">
           <h1 className="font-Suranna sm:text-3xl text-2xl text-secondary mb-6 text-center">
             Taste of Persia
           </h1>

@@ -5,8 +5,8 @@ const Page = () => {
   return (
     <>
       <Head>
-        <title>The Goodness Land - User Cart</title>
-        <meta name="description" content="The Goodness Land - User Cart" />
+        <title>Taste of Persia - User Cart</title>
+        <meta name="description" content="Taste of Persia - User Cart" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Cart />

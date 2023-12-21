@@ -20,10 +20,5 @@ module.exports = {
   tokenExpiryLimit: 86400,
   otpExpiryLimit: 1,
   squareAccessToken: process.env.SQUARE_ACCESS_TOKEN,
-  isAppSocketIOEnable: false,
-  twilo: {
-    account_sid: process.env.TWILO_ACCOUNT_SID,
-    auth_token: process.env.TWILO_AUTH_TOKEN,
-    mobile_number: process.env.TWILO_MOBILE_NUMBER
-  }
+  isAppSocketIOEnable: false
 };

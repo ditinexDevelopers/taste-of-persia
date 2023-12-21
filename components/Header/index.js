@@ -89,9 +89,9 @@ const Component = () => {
                 </Link>
               </li>
 
-              <div className="flex flex-col sm:flex-row sm:items-center px-6 sm:px-0 gap-4 sm:gap-0">
+              <div className="flex flex-col sm:flex-row sm:items-center px-6 sm:px-0 gap-4 sm:gap-0 mb-4 sm:mb-0">
                 {userSession === null ? (
-                  <li className={liClassName}>
+                  <li className={`${liClassName} xs:px-0`}>
                     <Link href="/user/login">
                       <span className={menuClassName}>Login</span>
                     </Link>
