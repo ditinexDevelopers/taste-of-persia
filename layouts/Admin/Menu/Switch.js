@@ -11,23 +11,22 @@ const Section = ({ switchState, menuId, onClickHandler }) => {
   };
 
   return (
-    <h1>toggle button</h1>
-    // <ToggleButton
-    //   inactiveLabel={'Disabled'}
-    //   activeLabel={'Enabled'}
-    //   colors={{
-    //     active: {
-    //       base: '#1CB0BC',
-    //       hover: '#178188'
-    //     },
-    //     inactive: {
-    //       base: 'rgb(65,66,68)',
-    //       hover: 'rgb(95,96,98)'
-    //     }
-    //   }}
-    //   value={toggle}
-    //   onToggle={onToggle}
-    // />
+    <ToggleButton
+      inactiveLabel={'Disabled'}
+      activeLabel={'Enabled'}
+      colors={{
+        active: {
+          base: '#1CB0BC',
+          hover: '#178188'
+        },
+        inactive: {
+          base: 'rgb(65,66,68)',
+          hover: 'rgb(95,96,98)'
+        }
+      }}
+      value={toggle}
+      onToggle={onToggle}
+    />
   );
 };
 

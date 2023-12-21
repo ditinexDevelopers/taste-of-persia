@@ -43,7 +43,7 @@ const Index = () => {
       if (response) {
         let tempStatus = response.value === 'true';
         const today = moment().format('dddd');
-        if (today == 'Tuesday') tempStatus = true;
+        if (today === 'Monday') tempStatus = true;
         setIsResturantClosed(tempStatus);
       }
     });

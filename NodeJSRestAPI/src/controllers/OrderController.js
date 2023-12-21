@@ -343,7 +343,7 @@ module.exports = {
       else if (status == 'Cancelled')
         sms = `Hi ${update.name}, Your order can not be processed now. It has been cancelled.`;
 
-      if (sms != '') Service.sendSMS(update.mobile, sms);
+      // if (sms != '') Service.sendSMS(update.mobile, sms);
 
       let today = new Date();
       today.setHours(0, 0, 0, 0);

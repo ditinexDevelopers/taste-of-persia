@@ -27,14 +27,14 @@ const Index = () => {
   const [isResturantClosed, setIsResturantClosed] = useState(false);
   const [permissionModal, setPermissionModal] = useState(false);
 
-  useEffect(() => {
-    try {
-      if (Notification.permission !== 'granted') setPermissionModal(true);
-      else updatePushToken();
-    } catch (e) {
-      alert(e);
-    }
-  }, []);
+  // useEffect(() => {
+  //   try {
+  //     if (Notification.permission !== 'granted') setPermissionModal(true);
+  //     else updatePushToken();
+  //   } catch (e) {
+  //     alert(e);
+  //   }
+  // }, []);
 
   useEffect(() => {
     let intervalId = setInterval(() => {
