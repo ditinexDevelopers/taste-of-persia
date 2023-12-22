@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
+import { motion, spring } from 'framer-motion';
 import PropTypes from 'prop-types';
-import { Motion, spring } from 'react-motion';
 import {
   reactToggle,
   reactToggleScreenReaderOnly,
@@ -214,13 +214,13 @@ export default class ToggleButton extends Component {
     const SpringConfig = internalSpringSetting;
     const HoverSpringConfig = internalHoverSpringSetting;
     return (
-      <Motion
-        style={{
-          opacity: spring(value ? 1 : 0, SpringConfig),
-          left: spring(value ? thumbAnimateRange[1] * 10 : thumbAnimateRange[0] * 10, SpringConfig),
-          colorNumber: spring(value ? 0 : 400, SpringConfig),
-          toggleNumber: spring(value ? 400 : 0, SpringConfig),
-          hoverNumber: spring(this.state.isHover ? 400 : 0, HoverSpringConfig)
+      <motion.div
+        animate={{
+          opacity: 1
+          // left: spring(value ? thumbAnimateRange[1] * 10 : thumbAnimateRange[0] * 10, SpringConfig),
+          // colorNumber: spring(value ? 0 : 400, SpringConfig),
+          // toggleNumber: spring(value ? 400 : 0, SpringConfig),
+          // hoverNumber: spring(this.state.isHover ? 400 : 0, HoverSpringConfig)
         }}
       >
         {({ opacity, left, colorNumber, hoverNumber, toggleNumber }) => (
@@ -324,7 +324,7 @@ export default class ToggleButton extends Component {
             />
           </div>
         )}
-      </Motion>
+      </motion.div>
     );
   }
 }
