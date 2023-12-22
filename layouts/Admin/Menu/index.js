@@ -41,16 +41,18 @@ const Index = () => {
       .finally(() => {});
   };
 
-  const updateAvailability = async (menuId, menuStatus) => {
+  const updateAvailability = (menuId, menuStatus) => {
     dispatch(loadingStart());
-    try {
-      const response = await apiPool.updateAvailable(menuId, menuStatus);
-      dispatch(loadingStop());
-      return response;
-    } catch (e) {
-      dispatch(loadingStop());
-      return false;
-    }
+    apiPool
+      .updateAvailable(menuId, menuStatus)
+      .then((response) => {
+        if (response) {
+          getMenus(selectedCategory);
+        }
+      })
+      .finally(() => {
+        dispatch(loadingStop());
+      });
   };
 
   return (

@@ -76,12 +76,14 @@ const Section = ({ _this }) => {
             <div className="w-2/5">{item.name}</div>
             <div className="flex flex-1 flex-col">$ {item.price.toFixed(2)}</div>
             <div className="text-left w-1/5 pt-1">
-              <Switch
+              <span
                 key={index}
-                switchState={item.is_active}
-                menuId={item._id}
-                onClickHandler={_this.updateAvailability}
-              />
+                onClick={() => _this.updateAvailability(item._id, !item.is_active)}
+                className="cursor-pointer inline-flex items-center bg-teal-400 rounded-full shadow py-1 px-3"
+              >
+                <input className="h-5 w-5 mr-2" type="radio" checked={item.is_active} />
+                <p className="text-sm ">{item.is_active ? 'Enabled' : 'Disabled'}</p>
+              </span>
             </div>
           </div>
         );

@@ -18,23 +18,17 @@ const Section = ({ _this }) => {
         } mt-6 mb-4 rounded-xl text-white flex justify-between items-center w-full h-16 py-2 px-8 shadow-lg-purple text-2xl`}
       >
         {moment().format('YYYY/MM/DD')} - {moment().format('dddd')}
-        <span className="cursor-pointer">
-          <ToggleButton
-            inactiveLabel={'Closed'}
-            activeLabel={'Open'}
-            colors={{
-              active: {
-                base: '#1CB0BC',
-                hover: '#178188'
-              },
-              inactive: {
-                base: 'rgb(65,66,68)',
-                hover: 'rgb(95,96,98)'
-              }
-            }}
-            value={!_this.isResturantClosed}
-            onToggle={() => _this.onToggle()}
+        <span
+          onClick={() => _this.onToggle()}
+          className="cursor-pointer flex items-center bg-teal-400 rounded-full shadow py-1 px-3"
+        >
+          <input
+            className="h-5 w-5 mr-1"
+            type="radio"
+            checked={!_this.isResturantClosed}
+            // onChange={() => _this.onToggle()}
           />
+          <p className="text-sm">{!_this.isResturantClosed ? 'Open' : 'Closed'}</p>
         </span>
       </div>
 
