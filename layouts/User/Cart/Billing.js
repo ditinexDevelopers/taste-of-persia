@@ -23,7 +23,7 @@ const Section = ({ _this }) => {
                 }
               : _this.userSession === null
               ? () => _this.register()
-              : // : () => _this.setPaymentModalShow(true)
+              : // () => _this.setPaymentModalShow(true)
                 () => _this.placeOrderHandler('sample token')
           }
         />
