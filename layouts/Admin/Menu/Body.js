@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Config from 'config';
 import Switch from './Switch';
 import classNames from 'classnames';
+import { BsToggle2Off, BsToggle2On } from 'react-icons/bs';
 
 const Section = ({ _this }) => {
   const CatIcon = {
@@ -79,9 +80,13 @@ const Section = ({ _this }) => {
               <span
                 key={index}
                 onClick={() => _this.updateAvailability(item._id, !item.is_active)}
-                className="cursor-pointer inline-flex items-center bg-teal-400 rounded-full shadow py-1 px-3"
+                className="cursor-pointer inline-flex items-center bg-toggle-btn-bg rounded-full shadow py-1.5 px-4 text-white"
               >
-                <input className="h-5 w-5 mr-2" type="radio" checked={item.is_active} />
+                {!item.is_active ? (
+                  <BsToggle2Off size={22} className="mr-2" />
+                ) : (
+                  <BsToggle2On className="mr-2" size={22} />
+                )}
                 <p className="text-sm ">{item.is_active ? 'Enabled' : 'Disabled'}</p>
               </span>
             </div>
