@@ -64,7 +64,7 @@ const Section = ({ _this }) => {
         applicationId={Config.SQUARE_APPLICATION_ID}
         locationId={Config.SQUARE_LOCATION_ID}
         cardTokenizeResponseReceived={(response, buyer) => {
-          //console.log(response);
+          // console.log('response of payment card', response);
           _this.setPaymentModalShow(false);
           if (response.status == 'OK') _this.placeOrderHandler(response.token);
           else toast.error(response);
