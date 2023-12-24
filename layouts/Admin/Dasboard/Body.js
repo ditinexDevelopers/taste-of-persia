@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card, OrderStatus, ToggleButton, Modal, ButtonSecondary } from 'components';
 import { MdRefresh, MdOutlineNoFood } from 'react-icons/md';
+import { BsToggle2Off, BsToggle2On } from 'react-icons/bs';
 import Moment from 'moment';
 import Analytics from './Analytics';
 import StatusUpdateModal from './StatusUpdateModal';
@@ -20,14 +21,13 @@ const Section = ({ _this }) => {
         {moment().format('YYYY/MM/DD')} - {moment().format('dddd')}
         <span
           onClick={() => _this.onToggle()}
-          className="cursor-pointer flex items-center bg-teal-400 rounded-full shadow py-1 px-3"
+          className="cursor-pointer flex items-center bg-toggle-btn-bg rounded-full shadow py-1.5 px-4"
         >
-          <input
-            className="h-5 w-5 mr-1"
-            type="radio"
-            checked={!_this.isResturantClosed}
-            // onChange={() => _this.onToggle()}
-          />
+          {_this.isResturantClosed ? (
+            <BsToggle2Off size={22} className="mr-1.5" />
+          ) : (
+            <BsToggle2On className="mr-1.5" size={22} />
+          )}
           <p className="text-sm">{!_this.isResturantClosed ? 'Open' : 'Closed'}</p>
         </span>
       </div>

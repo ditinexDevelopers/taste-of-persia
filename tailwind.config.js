@@ -23,7 +23,8 @@ module.exports = {
         titlebg: 'rgb(249,250,253)',
         bgcolor: 'rgba(237,242,249,0.96)',
         'blue-700': '#1976d2',
-        'blue-500': '#2196f3'
+        'blue-500': '#2196f3',
+        'toggle-btn-bg': '#076163'
       },
       animation: {
         'spin-slow': 'spin 6s linear infinite'
