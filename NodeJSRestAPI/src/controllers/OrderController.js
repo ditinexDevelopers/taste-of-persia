@@ -98,7 +98,7 @@ module.exports = {
       let validateError = null;
       if (name.trim() == '' || email.trim() == '' || mobile.trim() == '')
         validateError = 'Please enter valid order details.';
-      // if (payment_token.trim() == '') validateError = 'Invalid payment token.';
+      if (payment_token.trim() == '') validateError = 'Invalid payment token.';
 
       if (validateError) return HandleError(res, validateError);
 
@@ -127,72 +127,72 @@ module.exports = {
 
       let response = null;
 
-      // try {
-      //   response = await SquarePaymentGateway.paymentsApi.createPayment({
-      //     sourceId: payment_token,
-      //     idempotencyKey: new Date().getTime().toString(),
-      //     amountMoney: {
-      //       amount: Math.round(total_price * 100),
-      //       currency: 'USD'
-      //     },
-      //     note: payment_note,
-      //     buyer_email_address: email
-      //   });
-      // } catch (error) {
-      //   if (error instanceof ApiError) {
-      //     const e = error.result.errors[0];
-      //     console.log(e.category);
-      //     console.log(e.code);
-      //     console.log(e.detail);
-      //     return HandleError(res, 'Payment Failed : ' + e.detail);
-      //   } else {
-      //     console.log('Unexpected error occurred: ', error);
-      //     return HandleError(res, 'Unexpected error occurred from payment gateway. ');
-      //   }
-      // }
+      try {
+        response = await SquarePaymentGateway.paymentsApi.createPayment({
+          sourceId: payment_token,
+          idempotencyKey: new Date().getTime().toString(),
+          amountMoney: {
+            amount: Math.round(total_price * 100),
+            currency: 'USD'
+          },
+          note: payment_note,
+          buyer_email_address: email
+        });
+      } catch (error) {
+        if (error instanceof ApiError) {
+          const e = error.result.errors[0];
+          console.log(e.category);
+          console.log(e.code);
+          console.log(e.detail);
+          return HandleError(res, 'Payment Failed : ' + e.detail);
+        } else {
+          console.log('Unexpected error occurred: ', error);
+          return HandleError(res, 'Unexpected error occurred from payment gateway. ');
+        }
+      }
 
       let inserted = null;
 
-      //console.log(response.result);
+      // console.log(response.result);
 
-      // if (response) { }
+      if (response) {
+        const finalData = {
+          user_id: Mongoose.Types.ObjectId(user._id),
+          name: name,
+          mobile: mobile,
+          email: email,
+          billing_address: billing_address,
+          total_price: total_price.toFixed(2),
+          items: finalItems,
+          additional_comment: additional_comment,
+          payment_details: {
+            id: response.result.payment.id,
+            status: response.result.payment.status,
+            sourceType: response.result.payment.sourceType,
+            orderId: response.result.payment.orderId,
+            receiptNumber: response.result.payment.receiptNumber,
+            locationId: response.result.payment.locationId
+          }
+        };
 
-      const finalData = {
-        user_id: Mongoose.Types.ObjectId(user._id),
-        name: name,
-        mobile: mobile,
-        email: email,
-        billing_address: billing_address,
-        total_price: total_price.toFixed(2),
-        items: finalItems,
-        additional_comment: additional_comment,
-        payment_details: 'none'
-        // payment_details: {
-        //   id: response.result.payment.id,
-        //   status: response.result.payment.status,
-        //   sourceType: response.result.payment.sourceType,
-        //   orderId: response.result.payment.orderId,
-        //   receiptNumber: response.result.payment.receiptNumber,
-        //   locationId: response.result.payment.locationId
-        // }
-      };
+        inserted = await Insert({
+          model: Order,
+          data: finalData
+        });
 
-      inserted = await Insert({
-        model: Order,
-        data: finalData
-      });
+        if (!inserted)
+          return HandleError(res, 'Failed to place order. Please contact system admin.');
 
-      if (!inserted) return HandleError(res, 'Failed to place order. Please contact system admin.');
-
-      const adminToken = await IsExistsOne({
-        model: Configs,
-        where: {
-          key: 'pushToken'
+        const adminToken = await IsExistsOne({
+          model: Configs,
+          where: {
+            key: 'pushToken'
+          }
+        });
+        if (adminToken) {
+          console.log(adminToken);
+          Firebase.sendPush(adminToken.value);
         }
-      });
-      if (adminToken) {
-        console.log(adminToken);
-        Firebase.sendPush(adminToken.value);
       }
 
       return HandleSuccess(res, inserted);

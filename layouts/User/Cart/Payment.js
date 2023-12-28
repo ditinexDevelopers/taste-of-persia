@@ -75,7 +75,7 @@ const Section = ({ _this }) => {
             addressLines: [address],
             familyName: name,
             givenName: name,
-            countryCode: 'USA',
+            countryCode: 'US',
             city: city
           },
           currencyCode: 'USD',
