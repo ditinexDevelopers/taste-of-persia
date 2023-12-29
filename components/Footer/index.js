@@ -62,7 +62,11 @@ const Component = () => {
 
             <p className="text-lightgray flex items-center justify-center md:justify-start mb-4">
               <AiOutlineCheck className="text-lightgray text-lg mr-3.5" />
-              Tue - Sun: 12PM - 9PM
+              Tue - Fri: 11:30AM - 8:30PM
+            </p>
+            <p className="text-lightgray flex items-center justify-center md:justify-start mb-4">
+              <AiOutlineCheck className="text-lightgray text-lg mr-3.5" />
+              Sat - Sun: 11:30AM - 9PM
             </p>
           </div>
         </div>
