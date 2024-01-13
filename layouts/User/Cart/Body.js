@@ -14,8 +14,9 @@ const Section = ({ _this }) => {
     <div className="bg-black">
       <div className="relative bg-home-bg fullbgsize bg-no-repeat bg-top min-h-[80px] min-w-full"></div>
       {_this.isResturantClosed && (
-        <div className="px-2 py-2 m-2 text-center bg-red-200 rounded-md border-red-500 text-red-500 font-bold text-base">
-          We are closed today. Please come back during opening hours.
+        <div className="px-2 py-2 m-2 text-center bg-red-100 rounded-md border-red-500 text-red-600 font-bold text-base">
+          We are not accepting online order as of now. Please call the restaurant to place the
+          order.{' '}
         </div>
       )}
       <div className="flex sm:flex-row flex-col py-4">
