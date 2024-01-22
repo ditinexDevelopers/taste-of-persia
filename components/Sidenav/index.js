@@ -19,10 +19,10 @@ const Component = () => {
     <>
       <div
         className={`p-3 text-white bg-secondary transition-all duration-300 fixed z-20 ${
-          isNavbarExpanded ? 'w-52' : 'w-12'
+          isNavbarExpanded ? 'w-full sm:w-52' : 'w-12'
         } h-full`}
       >
-        <div className="absolute top-3 -right-5">
+        <div className="absolute top-3 right-0 sm:-right-5">
           <div className="rounded-full p-1 bg-white border-2 border-secondary hover:scale-110 duration-200">
             {isNavbarExpanded ? (
               <MdChevronRight

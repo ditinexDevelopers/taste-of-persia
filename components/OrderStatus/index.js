@@ -5,10 +5,11 @@ const Component = ({ status, onClick = null, readyIn }) => {
   const CompletedStatus = () => {
     return (
       <div
-        className="bg-green-200 w-44 flex flex-row items-center p-1 text-green-800 border border-green-400 rounded-full text-sm cursor-pointer"
+        className="bg-green-200 w-32 sm:w-44 flex flex-row items-center p-1 text-green-800 border border-green-400 rounded-full text-sm cursor-pointer"
         onClick={onClick}
       >
-        <MdCheck className="bg-green-400 rounded-full w-7 h-7 p-1 mr-1" /> Completed
+        <MdCheck className="bg-green-400 rounded-full w-7 h-7 p-1 mr-1 text-xs sm:text-base" />{' '}
+        Completed
       </div>
     );
   };

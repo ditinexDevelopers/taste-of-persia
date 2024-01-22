@@ -16,7 +16,7 @@ const Section = ({ _this }) => {
           _this.isResturantClosed
             ? 'from-pink-500 to-pink-700 shadow-lg-pink'
             : 'from-blue-500 to-blue-700 shadow-lg-blue'
-        } mt-6 mb-4 rounded-xl text-white flex justify-between items-center w-full h-16 py-2 px-8 shadow-lg-purple text-2xl`}
+        } mt-6 mb-4 rounded-xl text-white flex justify-between items-center w-full h-16 py-2 px-8 shadow-lg-purple text-sm sm:text-base md:text-2xl`}
       >
         {moment().format('YYYY/MM/DD')} - {moment().format('dddd')}
         <span
