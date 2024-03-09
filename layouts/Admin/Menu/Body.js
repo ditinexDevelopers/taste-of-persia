@@ -4,6 +4,8 @@ import Config from 'config';
 import Switch from './Switch';
 import classNames from 'classnames';
 import { BsToggle2Off, BsToggle2On } from 'react-icons/bs';
+import { FaRegEdit } from 'react-icons/fa';
+import EditMenuPriceModal from './EditMenuPriceModal';
 
 const Section = ({ _this }) => {
   const CatIcon = {
@@ -81,7 +83,26 @@ const Section = ({ _this }) => {
                     </div>
                   </td>
                   <td className="text-center px-2">{item.name}</td>
-                  <td className="text-center px-1">$ {item.price.toFixed(2)}</td>
+                  <td className="text-center px-2">
+                    <div className="flex gap-2 justify-center">
+                      <p>$ {item.price.toFixed(2)}</p>
+                      <FaRegEdit
+                        size={18}
+                        fill="#495D6A"
+                        cursor={'pointer'}
+                        onClick={() => {
+                          _this.setEditPriceModalVisibility(true),
+                            _this.setEditPriceData((prev) => ({
+                              ...prev,
+                              id: item._id,
+                              menuName: item.name,
+                              price: item.price,
+                              currentPrice: item.price
+                            }));
+                        }}
+                      />
+                    </div>
+                  </td>
                   <td className="text-center py-2">
                     <span
                       key={index}
@@ -102,6 +123,7 @@ const Section = ({ _this }) => {
           </tbody>
         </table>
       </div>
+      <EditMenuPriceModal _this={_this} />
     </div>
   );
 };

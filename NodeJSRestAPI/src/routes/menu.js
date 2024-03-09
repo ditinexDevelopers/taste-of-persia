@@ -15,5 +15,6 @@ router.use(VerifyToken);
 router.get('/update-menu/:id/:status', Menu.ToggleMenu);
 router.get('/get-all-menu-details', Menu.GetAllMenuList);
 router.get('/get-all-menu-details-by-category/:category', Menu.GetMenuList);
+router.post('/edit-menu-price', Menu.EditMenuPrice);
 
 module.exports = router;

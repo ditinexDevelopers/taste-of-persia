@@ -199,6 +199,19 @@ const apiPool = {
     }
     return handleResponse(response);
   },
+  updateMenuPrice: async (data) => {
+    const token = await getToken();
+    let response = null;
+    try {
+      response = await api.post('/v1/menu/edit-menu-price', data, {
+        params: {},
+        headers: { Authorization: 'Bearer: ' + token }
+      });
+    } catch (e) {
+      response = e;
+    }
+    return handleResponse(response);
+  },
   getAllMenus: async (data) => {
     const token = await getToken();
     let response = null;

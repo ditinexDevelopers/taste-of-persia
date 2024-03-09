@@ -100,5 +100,30 @@ module.exports = {
     } catch (err) {
       HandleServerError(res, req, err);
     }
+  },
+  EditMenuPrice: async (req, res, next) => {
+    try {
+      const { user } = req;
+      if (user.user_role !== 'admin') return UnauthorizedError(res);
+      const { id, price } = req.body;
+      if (!id) return HandleError(res, 'Invalid menu id.');
+      if (!price) return HandleError(res, 'Invalid Price.');
+
+      const data = await FindAndUpdate({
+        model: Menu,
+        where: { _id: Mongoose.Types.ObjectId(id) },
+        update: {
+          $set: {
+            price: price
+          }
+        }
+      });
+
+      if (!data) return HandleError(res, 'Failed to update menu.');
+
+      return HandleSuccess(res, true);
+    } catch (err) {
+      HandleServerError(res, req, err);
+    }
   }
 };

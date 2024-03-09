@@ -5,12 +5,20 @@ import apiPool from 'api';
 import { useDispatch } from 'react-redux';
 import { loadingStart, loadingStop } from 'redux/action';
 import IsAdmin from 'hoc/IsAdmin';
+import { toast } from 'react-toastify';
 
 const Index = () => {
   const dispatch = useDispatch();
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('');
   const [menus, setMenus] = useState([]);
+  const [editPriceModalVisibility, setEditPriceModalVisibility] = useState(false);
+  const [editPriceData, setEditPriceData] = useState({
+    id: '',
+    price: '',
+    menuName: '',
+    currentPrice: ''
+  });
 
   useEffect(() => {
     getCategories();
@@ -55,6 +63,29 @@ const Index = () => {
       });
   };
 
+  const updateMenuPrice = () => {
+    dispatch(loadingStart());
+    apiPool
+      .updateMenuPrice(editPriceData)
+      .then((response) => {
+        if (response) {
+          toast.success('Price updated successfully');
+          setEditPriceModalVisibility(false);
+          setEditPriceData((prev) => ({
+            ...prev,
+            id: '',
+            price: '',
+            currentPrice: '',
+            menuName: ''
+          }));
+          getMenus(selectedCategory);
+        }
+      })
+      .finally(() => {
+        dispatch(loadingStop());
+      });
+  };
+
   return (
     <DashboardContainer>
       <Body
@@ -63,7 +94,12 @@ const Index = () => {
           selectedCategory,
           setSelectedCategory,
           menus,
-          updateAvailability
+          updateAvailability,
+          editPriceModalVisibility,
+          setEditPriceModalVisibility,
+          editPriceData,
+          setEditPriceData,
+          updateMenuPrice
         }}
       />
     </DashboardContainer>
