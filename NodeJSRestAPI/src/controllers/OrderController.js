@@ -22,7 +22,8 @@ const {
   ValidateLength,
   ValidateMobile,
   GeneratePassword,
-  IsExistsOne
+  IsExistsOne,
+  FindOne
 } = require('./BaseController');
 
 const { Client, Environment, ApiError } = require('square');
@@ -32,6 +33,46 @@ const SquarePaymentGateway = new Client({
 });
 
 module.exports = {
+  GetResturantTimings: async (req, res, next) => {
+    try {
+      const data = await IsExistsOne({
+        model: Configs,
+        where: {
+          key: 'timings'
+        }
+      });
+
+      if (!data) return HandleError(res, 'Failed to fetch timings.');
+
+      return HandleSuccess(res, data);
+    } catch (err) {
+      HandleServerError(res, req, err);
+    }
+  },
+  SetResturantTimings: async (req, res, next) => {
+    try {
+      const { user } = req;
+      const timings = req.body;
+      if (user?.user_role !== 'admin') return UnauthorizedError(res);
+
+      const data = await FindAndUpdate({
+        model: Configs,
+        where: {
+          key: 'timings'
+        },
+        update: {
+          $set: {
+            value: timings
+          }
+        }
+      });
+
+      return HandleSuccess(res, true);
+    } catch (err) {
+      HandleServerError(res, req, err);
+    }
+  },
+
   GetResturantStatus: async (req, res, next) => {
     try {
       const data = await IsExistsOne({
@@ -71,6 +112,7 @@ module.exports = {
       HandleServerError(res, req, err);
     }
   },
+
   SendPush: async (req, res, next) => {
     try {
       const adminToken = await IsExistsOne({

@@ -17,13 +17,15 @@ app.use(
   })
 );
 app.use(bodyParser.raw({ limit: '50mb' }));
-// app.use(
-//   fileupload({
-//     limits: { fileSize: 50 * 1024 * 1024 },
-//     debug: env === "development",
-//   })
-// );
-//app.use(express.static(__dirname + '/public'));
+app.use(
+  fileupload({
+    limits: { fileSize: 50 * 1024 * 1024 }
+    // debug: env === 'development'
+  })
+);
+
+app.use(express.static(__dirname + '/public'));
+
 app.use(express.static('public'));
 
 // enable CORS - Cross Origin Resource Sharing

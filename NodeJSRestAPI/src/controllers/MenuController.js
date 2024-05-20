@@ -19,8 +19,10 @@ const {
   ValidateLength,
   ValidateMobile,
   GeneratePassword,
-  IsExistsOne
+  IsExistsOne,
+  FindOne
 } = require('./BaseController');
+const { ImageUploader, ImageDeleter } = require('../helpers');
 
 module.exports = {
   GetMenuList: async (req, res, next) => {
@@ -97,6 +99,49 @@ module.exports = {
       });
 
       return HandleSuccess(res, data);
+    } catch (err) {
+      HandleServerError(res, req, err);
+    }
+  },
+  EditMenuDetails: async (req, res, next) => {
+    try {
+      const { user } = req;
+      if (user.user_role !== 'admin') return UnauthorizedError(res);
+      const { id, price } = req.body;
+      const image_data = req.files?.image_data;
+      if (!id) return HandleError(res, 'Invalid menu id.');
+      // if (!price) return HandleError(res, 'Invalid Price.');
+
+      const menu = await FindOne({
+        model: Menu,
+        where: {
+          _id: Mongoose.Types.ObjectId(id)
+        }
+      });
+
+      const oldPath = menu.image;
+      const uploadedPath = ImageUploader('/images/', image_data);
+
+      const data = await FindAndUpdate({
+        model: Menu,
+        where: { _id: Mongoose.Types.ObjectId(id) },
+        update: {
+          $set: {
+            price: price,
+            image: uploadedPath
+          }
+        }
+      });
+
+      if (!data) {
+        //if update failed then deleted new uploaded file
+        ImageDeleter(uploadedPath);
+        return HandleError(res, 'Failed to update menu.');
+      }
+
+      ImageDeleter(oldPath);
+
+      return HandleSuccess(res, true);
     } catch (err) {
       HandleServerError(res, req, err);
     }
