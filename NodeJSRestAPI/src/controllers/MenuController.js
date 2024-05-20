@@ -103,16 +103,11 @@ module.exports = {
       HandleServerError(res, req, err);
     }
   },
-<<<<<<< HEAD
   EditMenuDetails: async (req, res, next) => {
-=======
-  EditMenuPrice: async (req, res, next) => {
->>>>>>> 9cdd794aceaf2ea3b27f9681961088dd10dfb9ab
     try {
       const { user } = req;
       if (user.user_role !== 'admin') return UnauthorizedError(res);
       const { id, price } = req.body;
-<<<<<<< HEAD
       const image_data = req.files?.image_data;
       if (!id) return HandleError(res, 'Invalid menu id.');
       // if (!price) return HandleError(res, 'Invalid Price.');
@@ -126,27 +121,18 @@ module.exports = {
 
       const oldPath = menu.image;
       const uploadedPath = ImageUploader('/images/', image_data);
-=======
-      if (!id) return HandleError(res, 'Invalid menu id.');
-      if (!price) return HandleError(res, 'Invalid Price.');
->>>>>>> 9cdd794aceaf2ea3b27f9681961088dd10dfb9ab
 
       const data = await FindAndUpdate({
         model: Menu,
         where: { _id: Mongoose.Types.ObjectId(id) },
         update: {
           $set: {
-<<<<<<< HEAD
             price: price,
             image: uploadedPath
-=======
-            price: price
->>>>>>> 9cdd794aceaf2ea3b27f9681961088dd10dfb9ab
           }
         }
       });
 
-<<<<<<< HEAD
       if (!data) {
         //if update failed then deleted new uploaded file
         ImageDeleter(uploadedPath);
@@ -154,9 +140,6 @@ module.exports = {
       }
 
       ImageDeleter(oldPath);
-=======
-      if (!data) return HandleError(res, 'Failed to update menu.');
->>>>>>> 9cdd794aceaf2ea3b27f9681961088dd10dfb9ab
 
       return HandleSuccess(res, true);
     } catch (err) {
