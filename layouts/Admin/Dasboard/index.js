@@ -26,6 +26,12 @@ const Index = () => {
   const [showModal, setShowModal] = useState(false);
   const [isResturantClosed, setIsResturantClosed] = useState(false);
   const [permissionModal, setPermissionModal] = useState(false);
+  const [editTimingModalOpen, setEditTimingModalOpen] = useState(false);
+  const [timings, setTimings] = useState(null);
+  const [editTimings, setEditTimings] = useState({
+    'tue-fri': { opens: '', closed: '' },
+    'sat-sun': { opens: '', closed: '' }
+  });
 
   // useEffect(() => {
   //   try {
@@ -54,6 +60,7 @@ const Index = () => {
         setIsResturantClosed(response.value === 'true');
       }
     });
+    fetchTimings();
   }, []);
 
   useEffect(() => {
@@ -144,6 +151,58 @@ const Index = () => {
       });
   };
 
+  const fetchTimings = () => {
+    dispatch(loadingStart());
+    apiPool
+      .GetResturantTimes()
+      .then((response) => {
+        if (response) {
+          setTimings(response.value);
+          setEditTimings({
+            'tue-fri': response.value['tue-fri'],
+            'sat-sun': response.value['sat-sun']
+          });
+        }
+      })
+      .finally(() => {
+        dispatch(loadingStop());
+      });
+  };
+  const updateTimings = () => {
+    if (
+      (editTimings['sat-sun'].opens == timings['sat-sun'].opens && editTimings['sat-sun'].closed) ==
+        timings['sat-sun'].closed &&
+      editTimings['tue-fri'].opens == timings['tue-fri'].opens &&
+      editTimings['tue-fri'].closed == timings['tue-fri'].closed
+    )
+      return toast.warn('Previos and Edited Time should be different');
+
+    if (
+      (editTimings['sat-sun'].opens == '' && editTimings['sat-sun'].closed) == '' &&
+      editTimings['tue-fri'].opens == '' &&
+      editTimings['tue-fri'].closed == ''
+    )
+      return toast.warn('Time should not be empty!');
+    dispatch(loadingStart());
+    apiPool
+      .UpdateResturantTimes(editTimings)
+      .then((response) => {
+        if (response) {
+          toast.success('Times changed successfully!');
+          setEditTimingModalOpen(false);
+          fetchTimings();
+          setEditTimings((prev) => ({
+            ...prev,
+            'tue-fri': { opens: '', closed: '' },
+            'sat-sun': { opens: '', closed: '' }
+          }));
+        }
+      })
+      .finally(() => {
+        dispatch(loadingStop());
+      });
+  };
+
   return (
     <DashboardContainer>
       <Body
@@ -161,7 +220,13 @@ const Index = () => {
           onToggle,
           permissionModal,
           setPermissionModal,
-          onPermissionButtonClick
+          onPermissionButtonClick,
+          setEditTimingModalOpen,
+          editTimingModalOpen,
+          editTimings,
+          timings,
+          setEditTimings,
+          updateTimings
         }}
       />
     </DashboardContainer>

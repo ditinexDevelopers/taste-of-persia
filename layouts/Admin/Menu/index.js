@@ -5,12 +5,22 @@ import apiPool from 'api';
 import { useDispatch } from 'react-redux';
 import { loadingStart, loadingStop } from 'redux/action';
 import IsAdmin from 'hoc/IsAdmin';
+import { toast } from 'react-toastify';
 
 const Index = () => {
   const dispatch = useDispatch();
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('');
   const [menus, setMenus] = useState([]);
+  const [editMenuModalVisibility, setEditMenuModalVisibility] = useState(false);
+  const [editMenuData, setEditMenuData] = useState({
+    id: '',
+    price: '',
+    menuName: '',
+    currentPrice: '',
+    image_data: '',
+    image_prev: ''
+  });
 
   useEffect(() => {
     getCategories();
@@ -55,6 +65,41 @@ const Index = () => {
       });
   };
 
+  const updateMenu = () => {
+    if (editMenuData.currentPrice === editMenuData.price && editMenuData.image_data == '')
+      return toast.warn('No changes applied !');
+    dispatch(loadingStart());
+
+    const formData = new FormData();
+    formData.append('id', editMenuData.id);
+    formData.append('price', editMenuData.price);
+    if (editMenuData.image_data != '') {
+      formData.append('image_data', editMenuData.image_data);
+    }
+
+    apiPool
+      .updateMenuDetails(formData)
+      .then((response) => {
+        if (response) {
+          toast.success('Menu Details updated successfully');
+          setEditMenuModalVisibility(false);
+          setEditMenuData((prev) => ({
+            ...prev,
+            id: '',
+            price: '',
+            currentPrice: '',
+            menuName: '',
+            image_data: '',
+            image_prev: ''
+          }));
+          getMenus(selectedCategory);
+        }
+      })
+      .finally(() => {
+        dispatch(loadingStop());
+      });
+  };
+
   return (
     <DashboardContainer>
       <Body
@@ -63,7 +108,12 @@ const Index = () => {
           selectedCategory,
           setSelectedCategory,
           menus,
-          updateAvailability
+          updateAvailability,
+          editMenuModalVisibility,
+          setEditMenuModalVisibility,
+          editMenuData,
+          setEditMenuData,
+          updateMenu
         }}
       />
     </DashboardContainer>

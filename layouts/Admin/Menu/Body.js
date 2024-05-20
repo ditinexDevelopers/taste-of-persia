@@ -4,6 +4,8 @@ import Config from 'config';
 import Switch from './Switch';
 import classNames from 'classnames';
 import { BsToggle2Off, BsToggle2On } from 'react-icons/bs';
+import { FaRegEdit } from 'react-icons/fa';
+import EditMenuModal from './EditMenuModal';
 
 const Section = ({ _this }) => {
   const CatIcon = {
@@ -49,10 +51,12 @@ const Section = ({ _this }) => {
           );
         })}
       </div>
+
       <div className="flex flex-row gap-2 pb-2 px-1 text-secondary font-medium">
         <div className="w-1/5">Image</div>
         <div className="w-2/5">Name</div>
         <div className="flex flex-1 flex-col">Price</div>
+        <div className="flex flex-1">Edit</div>
         <div className="flex text-left w-1/5 items-center">Status</div>
       </div>
 
@@ -76,6 +80,26 @@ const Section = ({ _this }) => {
             </div>
             <div className="w-2/5">{item.name}</div>
             <div className="flex flex-1 flex-col">$ {item.price.toFixed(2)}</div>
+            <div className="flex flex-1">
+              <FaRegEdit
+                size={17}
+                fill="#495D6A"
+                cursor={'pointer'}
+                onClick={() => {
+                  _this.setEditMenuModalVisibility(true),
+                    _this.setEditMenuData((prev) => ({
+                      ...prev,
+                      id: item._id,
+                      menuName: item.name,
+                      price: item.price,
+                      currentPrice: item.price,
+                      image: item.image,
+                      image_data: '',
+                      image_prev: ''
+                    }));
+                }}
+              />
+            </div>
             <div className="text-left w-1/5 pt-1">
               <span
                 key={index}
@@ -93,6 +117,8 @@ const Section = ({ _this }) => {
           </div>
         );
       })}
+
+      <EditMenuModal _this={_this} />
     </div>
   );
 };
