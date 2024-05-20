@@ -8,7 +8,7 @@ import Moment from 'moment';
 
 const Section = ({ _this }) => {
   return (
-    <div className="flex flex-row flex-wrap justify-between mt-10 mb-20 gap-3">
+    <div className="flex flex-row flex-wrap justify-end sm:justify-between mt-10 mb-20 gap-3">
       {/* third one */}
 
       <div className=" w-52 h-52 relative bg-white shadow-md rounded-xl my-4">

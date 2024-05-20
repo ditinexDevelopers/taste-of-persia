@@ -14,14 +14,95 @@ const Section = ({ _this }) => {
       <div className="relative bg-gradient-to-tr from-blue-500 to-blue-700 -mt-10 mb-4 rounded-xl text-white grid items-center w-full h-16 py-2 px-8 shadow-lg-blue text-2xl">
         Order History
       </div>
-      {_this.orderData.length > 0 ? (
+      {/* {_this.orderData.length > 0 ? (
         <div className="flex flex-row gap-2 pb-2 px-1 text-secondary font-medium">
-          <div className="w-28">Order ID</div>
-          <div className="w-28">Ordered At</div>
+          <div className="md:w-28">Order ID</div>
+          <div className="md:w-28">Ordered At</div>
           <div className="flex flex-1 flex-col items-center">Items</div>
           <div className="flex flex-1">Billed To</div>
-          <div className="w-28">Amount</div>
-          <div className="flex text-left w-48 items-center">Status</div>
+          <div className="md:w-28">Amount</div>
+          <div className="flex text-left md:w-48 items-center">Status</div>
+        </div>
+      ) : (
+        <div className="flex-1 flex flex-col justify-center items-center text-borderlight py-3">
+          <MdOutlineNoFood size={50} />
+          <div className="text-xl">Sorry! No orders yet.</div>
+        </div>
+      )} */}
+
+      {_this.orderData.length > 0 ? (
+        <div className="overflow-x-scroll lg:overflow-hidden text-xs sm:text-base">
+          <table className="min-w-full">
+            <thead>
+              <tr>
+                <th className="border">Order ID</th>
+                <th className="border w-28">Order At</th>
+                <th className="border">Items</th>
+                <th className="border">Billed To</th>
+                <th className="border">Amount</th>
+                <th className="border">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              {_this.orderData?.map((item, index) => (
+                <tr
+                  key={index}
+                  id="table-row"
+                  className="px-1 py-2 border-t border-[rgb(238,238,238)]"
+                >
+                  <td className="text-left border px-1">{`#${parseInt(
+                    item._id.substring(0, 8),
+                    16
+                  ).toString()}`}</td>
+                  <td className="border px-1 w-28">
+                    {Moment(item.createdAt).format('YYYY-MM-DD hh:mm A')}
+                  </td>
+                  <td className="flex flex-1 flex-col text-center border py-2 px-1">
+                    <div className="text-xs">
+                      {item.items.map((food, i) => {
+                        return (
+                          <div
+                            key={i}
+                            className={classNames(
+                              'flex flex-row gap-2 items-center pb-1 mb-1 border-secondarylight',
+                              i !== item.items.length - 1 && 'border-b'
+                            )}
+                          >
+                            <div className="flex flex-1 text-left text-xs sm:text-sm">
+                              {food._id?.name}
+                            </div>
+                            <div className="flex w-6 sm:w-20 text-left text-xs sm:text-sm">
+                              x {food?.quantity}
+                            </div>
+                            <div className="flex w-12 sm:w-20 text-left text-xs sm:text-sm">
+                              $ {food?._id?.price}
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                    {item.additional_comment && (
+                      <div className="text-xs text-red-400">
+                        Additional comment : {item.additional_comment}
+                      </div>
+                    )}
+                  </td>
+                  <td className="text-left border px-1">
+                    <p>Name : {item.name}</p>
+                    <p>Email : {item.email}</p>
+                    <p>Mobile : {item.mobile}</p>
+                  </td>
+                  <td className="text-left border px-1">$ {item.total_price.toFixed(2)}</td>
+                  <td className="text-left pt-1 border px-1">
+                    <OrderStatus
+                      status={item.status}
+                      readyIn={Moment.duration(Moment(item.ready_for_pickup_at).diff(Moment()))}
+                    />
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       ) : (
         <div className="flex-1 flex flex-col justify-center items-center text-borderlight py-3">
@@ -30,7 +111,7 @@ const Section = ({ _this }) => {
         </div>
       )}
 
-      {_this.orderData?.map((item, index) => {
+      {/* {_this.orderData?.map((item, index) => {
         return (
           <div
             key={index}
@@ -77,7 +158,7 @@ const Section = ({ _this }) => {
             </div>
           </div>
         );
-      })}
+      })} */}
 
       <div className="flex items-center justify-center py-10 lg:px-0 sm:px-6 px-4">
         <div className="lg:w-4/5 w-full flex items-center justify-between border-t border-secondary">

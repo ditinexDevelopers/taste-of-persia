@@ -199,6 +199,7 @@ const apiPool = {
     }
     return handleResponse(response);
   },
+<<<<<<< HEAD
   updateMenuDetails: async (data) => {
     const token = await getToken();
     let response = null;
@@ -230,6 +231,13 @@ const apiPool = {
     let response = null;
     try {
       response = await api.post('/v1/order/update-resturant-timings', data, {
+=======
+  updateMenuPrice: async (data) => {
+    const token = await getToken();
+    let response = null;
+    try {
+      response = await api.post('/v1/menu/edit-menu-price', data, {
+>>>>>>> 9cdd794aceaf2ea3b27f9681961088dd10dfb9ab
         params: {},
         headers: { Authorization: 'Bearer: ' + token }
       });

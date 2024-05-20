@@ -18,7 +18,7 @@ const Component = ({ children }) => {
         </div>
         <div className="flex-auto ease-in-out transition-all duration-300 overflow-hidden">
           <Topbar />
-          <div className="pt-16 pb-6 pr-8 pl-8">{children}</div>
+          <div className="pt-16 pb-6 pr-2 pl-2 sm:pr-8 sm:pl-8">{children}</div>
         </div>
       </div>
     </>
