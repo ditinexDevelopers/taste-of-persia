@@ -7,6 +7,8 @@ import Analytics from './Analytics';
 import StatusUpdateModal from './StatusUpdateModal';
 import classNames from 'classnames';
 import moment from 'moment';
+import { AiFillClockCircle } from 'react-icons/ai';
+import EditTimingModal from './EditTimingsModal';
 
 const Section = ({ _this }) => {
   return (
@@ -19,17 +21,26 @@ const Section = ({ _this }) => {
         } mt-6 mb-4 rounded-xl text-white flex justify-between items-center w-full h-16 py-2 px-8 shadow-lg-purple text-sm sm:text-base md:text-2xl`}
       >
         {moment().format('YYYY/MM/DD')} - {moment().format('dddd')}
-        <span
-          onClick={() => _this.onToggle()}
-          className="cursor-pointer flex items-center bg-toggle-btn-bg rounded-full shadow py-1.5 px-4"
-        >
-          {_this.isResturantClosed ? (
-            <BsToggle2Off size={22} className="mr-1.5" />
-          ) : (
-            <BsToggle2On className="mr-1.5" size={22} />
-          )}
-          <p className="text-sm">{!_this.isResturantClosed ? 'Open' : 'Closed'}</p>
-        </span>
+        <div className="flex items-center space-x-2">
+          <span
+            onClick={() => _this.setEditTimingModalOpen(true)}
+            className="cursor-pointer flex items-center bg-toggle-btn-bg rounded-full shadow py-1.5 px-4"
+          >
+            <AiFillClockCircle className="mr-1.5" size={20} />
+            <p className="text-sm">Timing</p>
+          </span>
+          <span
+            onClick={() => _this.onToggle()}
+            className="cursor-pointer flex items-center bg-toggle-btn-bg rounded-full shadow py-1.5 px-4"
+          >
+            {_this.isResturantClosed ? (
+              <BsToggle2Off size={22} className="mr-1.5" />
+            ) : (
+              <BsToggle2On className="mr-1.5" size={22} />
+            )}
+            <p className="text-sm">{!_this.isResturantClosed ? 'Open' : 'Closed'}</p>
+          </span>
+        </div>
       </div>
 
       <Analytics _this={_this} />
@@ -123,6 +134,7 @@ const Section = ({ _this }) => {
       </div>
 
       <StatusUpdateModal _this={_this} />
+      <EditTimingModal _this={_this} />
 
       <Modal
         modalVisibility={_this.permissionModal}

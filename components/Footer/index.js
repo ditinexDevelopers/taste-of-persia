@@ -1,5 +1,8 @@
+import apiPool from 'api';
+import moment from 'moment';
 import Image from 'next/image';
 import Logo from 'public/images/logo.png';
+import { useEffect, useState } from 'react';
 import {
   AiOutlineCheck,
   AiOutlineClose,
@@ -11,8 +14,29 @@ import {
   AiOutlineTwitter,
   AiOutlineYoutube
 } from 'react-icons/ai';
+import { useDispatch } from 'react-redux';
+import { loadingStart, loadingStop } from 'redux/action';
 
 const Component = () => {
+  const [timings, setTimings] = useState(null);
+  const dispatch = useDispatch();
+  const fetchTimings = () => {
+    dispatch(loadingStart());
+    apiPool
+      .GetResturantTimes()
+      .then((response) => {
+        if (response) {
+          setTimings(response.value);
+        }
+      })
+      .finally(() => {
+        dispatch(loadingStop());
+      });
+  };
+
+  useEffect(() => {
+    fetchTimings();
+  }, []);
   return (
     <footer className="text-center lg:text-left bg-primary text-white">
       <div className="mx-15 py-10 text-center md:text-left">
@@ -44,7 +68,7 @@ const Component = () => {
             </h6>
             <p className="text-lightgray flex items-center justify-center md:justify-start mb-4">
               <AiOutlineMail className="text-lightgray text-lg mr-3.5" />
-              tasteofpersia@gmail.com
+              tasteofpersiallc@gmail.com
             </p>
             <p className="text-lightgray flex items-center justify-center md:justify-start mb-4">
               <AiOutlinePhone className="text-lightgray text-lg mr-3.5" />
@@ -62,11 +86,15 @@ const Component = () => {
 
             <p className="text-lightgray flex items-center justify-center md:justify-start mb-4">
               <AiOutlineCheck className="text-lightgray text-lg mr-3.5" />
-              Tue - Fri: 11:30AM - 8:30PM
+              Tue - Fri: {moment(timings?.['tue-fri']?.opens, 'HH:mm').format('h:mm A')}
+              {' - '}
+              {moment(timings?.['tue-fri']?.closed, 'HH:mm').format('h:mm A')}
             </p>
             <p className="text-lightgray flex items-center justify-center md:justify-start mb-4">
               <AiOutlineCheck className="text-lightgray text-lg mr-3.5" />
-              Sat - Sun: 11:30AM - 9PM
+              Sat - Sun: {moment(timings?.['sat-sun']?.opens, 'HH:mm').format('h:mm A')}
+              {' - '}
+              {moment(timings?.['sat-sun']?.closed, 'HH:mm').format('h:mm A')}
             </p>
           </div>
         </div>

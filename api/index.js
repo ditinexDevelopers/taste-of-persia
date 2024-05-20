@@ -199,11 +199,37 @@ const apiPool = {
     }
     return handleResponse(response);
   },
-  updateMenuPrice: async (data) => {
+  updateMenuDetails: async (data) => {
     const token = await getToken();
     let response = null;
     try {
-      response = await api.post('/v1/menu/edit-menu-price', data, {
+      response = await api.post('/v1/menu/edit-menu-details', data, {
+        params: {},
+        headers: { Authorization: 'Bearer: ' + token, 'Content-Type': 'multipart/form-data' }
+      });
+    } catch (e) {
+      response = e;
+    }
+    return handleResponse(response);
+  },
+  GetResturantTimes: async (data) => {
+    const token = await getToken();
+    let response = null;
+    try {
+      response = await api.get('/v1/order/get-resturant-timings', {
+        params: {},
+        headers: { Authorization: 'Bearer: ' + token }
+      });
+    } catch (e) {
+      response = e;
+    }
+    return handleResponse(response);
+  },
+  UpdateResturantTimes: async (data) => {
+    const token = await getToken();
+    let response = null;
+    try {
+      response = await api.post('/v1/order/update-resturant-timings', data, {
         params: {},
         headers: { Authorization: 'Bearer: ' + token }
       });

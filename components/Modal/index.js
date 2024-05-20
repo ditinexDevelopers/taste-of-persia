@@ -20,7 +20,7 @@ const Component = ({
   };
 
   const onBackDropClick = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     if (e.target == e.currentTarget && closeOnBackdropClick) onClose();
   };
 
