@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Header, Footer } from 'components';
-import { loadingStart, loadingStop, fillCart } from 'redux/action';
+import { loadingStart, loadingStop, fillCart, login } from 'redux/action';
 import apiPool from 'api';
 import Body from './Body';
 import { toast } from 'react-toastify';
@@ -12,8 +12,26 @@ const Index = () => {
   const [selectedCategory, setSelectedCategory] = useState('');
   const [menus, setMenus] = useState([]);
   const { cart } = useSelector((state) => state.cart);
-
+  const [timings, setTimings] = useState(null);
   // console.log('menu', menus);
+
+  const fetchTimings = () => {
+    dispatch(loadingStart());
+    apiPool
+      .GetResturantTimes()
+      .then((response) => {
+        if (response) {
+          setTimings(response.value);
+        }
+      })
+      .finally(() => {
+        dispatch(loadingStop());
+      });
+  };
+
+  useEffect(() => {
+    fetchTimings();
+  }, []);
 
   const addToCart = (i) => {
     toast.success('Item Added To Cart.');
@@ -64,7 +82,8 @@ const Index = () => {
           setSelectedCategory,
           menus,
           addToCart,
-          cart
+          cart,
+          timings
         }}
       />
       <Footer />
