@@ -1,8 +1,10 @@
 import Image from 'next/image';
 import React, { useState, useEffect } from 'react';
 import Styles from '../../styles/Home.module.css';
+import moment from 'moment';
 
 const Section = ({ _this }) => {
+  console.log(_this);
   return (
     <div className={`${Styles.sevice_bg} relative h-[750px] sm:h-[480px]`}>
       <div className="absolute left-0 top-0 h-[480px] p-5 sm:pt-28 pt-14 w-full">
@@ -21,13 +23,21 @@ const Section = ({ _this }) => {
               </div>
               <div className="flex flex-col gap-3">
                 <h3 className="text-lightgray tracking-wide">Tue - Fri</h3>
-                <p className="text-3xl text-red-400 font-montez">11:30 AM</p>
-                <p className="text-3xl text-red-400 font-montez">8:30 PM</p>
+                <p className="text-3xl text-red-400 font-montez">
+                  {moment(_this?.timings?.['tue-fri']?.opens, 'HH:mm').format('h:mm A')}
+                </p>
+                <p className="text-3xl text-red-400 font-montez">
+                  {moment(_this?.timings?.['tue-fri']?.closed, 'HH:mm').format('h:mm A')}
+                </p>
               </div>
               <div className="flex flex-col gap-3">
                 <h3 className="text-lightgray tracking-wide">Sat - Sun</h3>
-                <p className="text-3xl text-red-400 font-montez">11:30 AM</p>
-                <p className="text-3xl text-red-400 font-montez">9 PM</p>
+                <p className="text-3xl text-red-400 font-montez">
+                  {moment(_this?.timings?.['sat-sun']?.opens, 'HH:mm').format('h:mm A')}
+                </p>
+                <p className="text-3xl text-red-400 font-montez">
+                  {moment(_this?.timings?.['sat-sun']?.closed, 'HH:mm').format('h:mm A')}
+                </p>
               </div>
             </div>
           </div>

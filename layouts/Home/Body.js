@@ -28,7 +28,7 @@ const Section = ({ _this }) => {
       </div>
       <Hero />
       <Menu _this={_this} />
-      <Hero2 />
+      <Hero2 _this={_this} />
     </div>
   );
 };

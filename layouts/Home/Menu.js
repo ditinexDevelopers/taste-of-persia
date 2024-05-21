@@ -38,7 +38,7 @@ const Section = ({ _this }) => {
       </div>
 
       {/* MENU Category */}
-      <div className="flex flex-row flex-wrap justify-evenly items-center my-4 max-w-7xl m-auto">
+      <div className="sm:flex flex-row flex-wrap justify-evenly items-center my-4 max-w-7xl m-auto">
         <div
           onClick={() => _this.setSelectedCategory('')}
           className={`cursor-pointer py-5 px-8 ${
