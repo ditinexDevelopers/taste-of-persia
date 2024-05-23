@@ -19,7 +19,9 @@ const cartData = createSlice({
     },
     incrementQuantity: (state, action) => {
       state.cart = state.cart.map((item) => {
-        if (item._id === action.payload) {
+        if (item._id == action.payload.id && item.ind == action.payload.ind) {
+          return { ...item, quantity: item.quantity + 1 };
+        } else if (item._id === action.payload) {
           return { ...item, quantity: item.quantity + 1 };
         } else {
           return item;
@@ -29,7 +31,11 @@ const cartData = createSlice({
     },
     decrementQuantity: (state, action) => {
       state.cart = state.cart.map((item) => {
-        if (item._id === action.payload) {
+        if (item._id == action.payload.id && item.ind == action.payload.ind) {
+          if (item.quantity > 1) {
+            return { ...item, quantity: item.quantity - 1 };
+          } else return item;
+        } else if (item._id === action.payload) {
           if (item.quantity > 1) {
             return { ...item, quantity: item.quantity - 1 };
           } else {
@@ -43,6 +49,11 @@ const cartData = createSlice({
     },
     removeItem: (state, action) => {
       state.cart = state.cart.filter((item) => {
+        // If 'ind' is provided, match both '_id' and 'ind'
+        if (action.payload.ind !== undefined) {
+          return !(item._id === action.payload.id && item.ind === action.payload.ind);
+        }
+        // If 'ind' is not provided, match only '_id'
         return item._id !== action.payload;
       });
       localStorage.setItem('cart', JSON.stringify(state));

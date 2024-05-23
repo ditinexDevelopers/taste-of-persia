@@ -13,6 +13,8 @@ const Index = () => {
   const [menus, setMenus] = useState([]);
   const { cart } = useSelector((state) => state.cart);
   const [timings, setTimings] = useState(null);
+  const [optionsMenuModalVisibility, setOptionsMenuModalVisibility] = useState(false);
+  const [selectedItem, setSelectedItem] = useState(null);
   // console.log('menu', menus);
 
   const fetchTimings = () => {
@@ -33,10 +35,13 @@ const Index = () => {
     fetchTimings();
   }, []);
 
-  const addToCart = (i) => {
+  const addToCart = (i, ind = null) => {
     toast.success('Item Added To Cart.');
-    const value = { ...i, quantity: 1 };
-    const temp = [...new Map([...cart, value].map((item) => [item['_id'], item])).values()];
+    //modify a little so for 657d59744ee5b6cea853c16b && 657d5a0f4ee5b6cea853c16c (4 or 8 platters and price ko accordingly modify karna hoga)
+    const value = { ...i, quantity: 1, ind };
+    const temp = [
+      ...new Map([...cart, value].map((item) => [`${item._id}_${item.ind}`, item])).values()
+    ];
     dispatch(fillCart(temp));
   };
 
@@ -83,7 +88,11 @@ const Index = () => {
           menus,
           addToCart,
           cart,
-          timings
+          timings,
+          setOptionsMenuModalVisibility,
+          optionsMenuModalVisibility,
+          selectedItem,
+          setSelectedItem
         }}
       />
       <Footer />

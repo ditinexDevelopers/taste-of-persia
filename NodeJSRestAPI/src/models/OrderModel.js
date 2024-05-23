@@ -10,7 +10,8 @@ const OrderSchema = new Schema(
     items: [
       {
         _id: { type: Schema.Types.ObjectId, ref: 'menus' },
-        quantity: { type: Number, trim: true, default: 1 }
+        quantity: { type: Number, trim: true, default: 1 },
+        ind: { type: Number, trim: true }
       }
     ],
     additional_comment: { type: String, trim: true },

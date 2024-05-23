@@ -63,7 +63,7 @@ const EditMenuModal = ({ _this }) => {
               type="text"
               readOnly={true}
               value={_this.editMenuData?.menuName}
-              className=" w-full px-4 py-2 mt-2 text-secondary bg-white border rounded-md focus:border-secondary focus:ring-secondary focus:outline-none focus:ring focus:ring-opacity-40"
+              className=" w-full px-4 py-2 mt-2  bg-white border rounded-md focus:border-gray-100 focus:ring-gray-100 focus:outline-none focus:ring focus:ring-opacity-40"
             />
           </div>
           <div>
@@ -74,7 +74,7 @@ const EditMenuModal = ({ _this }) => {
               type="text"
               readOnly={true}
               value={_this.editMenuData?.currentPrice}
-              className=" w-full px-4 py-2 mt-2 text-secondary bg-white border rounded-md focus:border-secondary focus:ring-secondary focus:outline-none focus:ring focus:ring-opacity-40"
+              className=" w-full px-4 py-2 mt-2  bg-white border rounded-md focus:border-gray-100 focus:ring-gray-100 focus:outline-none focus:ring focus:ring-opacity-40"
             />
           </div>
           <div className="pb-5">

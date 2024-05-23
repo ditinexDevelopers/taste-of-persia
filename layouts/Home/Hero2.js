@@ -4,7 +4,6 @@ import Styles from '../../styles/Home.module.css';
 import moment from 'moment';
 
 const Section = ({ _this }) => {
-  console.log(_this);
   return (
     <div className={`${Styles.sevice_bg} relative h-[750px] sm:h-[480px]`}>
       <div className="absolute left-0 top-0 h-[480px] p-5 sm:pt-28 pt-14 w-full">

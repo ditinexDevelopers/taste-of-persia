@@ -13,6 +13,7 @@ const Index = () => {
   const [selectedCategory, setSelectedCategory] = useState('');
   const [menus, setMenus] = useState([]);
   const [editMenuModalVisibility, setEditMenuModalVisibility] = useState(false);
+  const [addMenuModalVisibility, setAddMenuModalVisibility] = useState(false);
   const [editMenuData, setEditMenuData] = useState({
     id: '',
     price: '',
@@ -20,6 +21,15 @@ const Index = () => {
     currentPrice: '',
     image_data: '',
     image_prev: ''
+  });
+
+  const [menuCategory, setMenuCategory] = useState(null);
+  const [addMenuData, setAddMenuData] = useState({
+    name: '',
+    price: '',
+    image_data: '',
+    image_prev: '',
+    description: ''
   });
 
   useEffect(() => {
@@ -57,6 +67,48 @@ const Index = () => {
       .updateAvailable(menuId, menuStatus)
       .then((response) => {
         if (response) {
+          getMenus(selectedCategory);
+        }
+      })
+      .finally(() => {
+        dispatch(loadingStop());
+      });
+  };
+
+  const AddNewMenuItem = () => {
+    if (
+      menuCategory?._id == '' ||
+      addMenuData.image_data == '' ||
+      addMenuData.name == '' ||
+      addMenuData.price == ''
+    )
+      return toast.warn('Please fill mandatory details !');
+    dispatch(loadingStart());
+
+    const formData = new FormData();
+    formData.append('name', addMenuData.name);
+    formData.append('price', addMenuData.price);
+    formData.append('description', addMenuData.description);
+    formData.append('category', menuCategory._id);
+    if (addMenuData.image_data != '') {
+      formData.append('image_data', addMenuData.image_data);
+    }
+
+    apiPool
+      .addNewMenu(formData)
+      .then((response) => {
+        if (response) {
+          toast.success('New Menu Item added successfully');
+          setAddMenuModalVisibility(false);
+          setAddMenuData((prev) => ({
+            ...prev,
+            price: '',
+            name: '',
+            description: '',
+            image_data: '',
+            image_prev: ''
+          }));
+          setMenuCategory(null);
           getMenus(selectedCategory);
         }
       })
@@ -113,7 +165,14 @@ const Index = () => {
           setEditMenuModalVisibility,
           editMenuData,
           setEditMenuData,
-          updateMenu
+          updateMenu,
+          addMenuData,
+          setAddMenuData,
+          menuCategory,
+          setMenuCategory,
+          addMenuModalVisibility,
+          setAddMenuModalVisibility,
+          AddNewMenuItem
         }}
       />
     </DashboardContainer>

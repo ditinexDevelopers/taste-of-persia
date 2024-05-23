@@ -54,7 +54,7 @@ const Index = () => {
     setTotal(total);
     let list = [];
     cart.map((element) => {
-      list.push({ id: element._id, quantity: element.quantity });
+      list.push({ id: element._id, quantity: element.quantity, ind: element.ind });
     });
     setItems(list);
   }, [cart]);
