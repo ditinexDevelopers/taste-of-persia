@@ -32,6 +32,20 @@ const SquarePaymentGateway = new Client({
   environment: Config.env == 'development' ? Environment.Sandbox : Environment.Production
 });
 
+function extractExtraCharge(text) {
+  // Define a regular expression pattern to match "add extra $<number>"
+  const regex = /add extra \$([\d.]+)/i;
+  const match = text.match(regex);
+
+  // If there's a match, return the number part (which is in the first capturing group)
+  if (match) {
+    return parseFloat(match[1]); // This will give you "10.00" or "25.00"
+  }
+
+  // If no match is found, return null or some default value
+  return null;
+}
+
 module.exports = {
   GetResturantTimings: async (req, res, next) => {
     try {
@@ -158,13 +172,29 @@ module.exports = {
 
       let payment_note = '';
 
-      dbItems.map((item) => {
-        const dbitem = items.filter((i) => i.id.toString() == item._id.toString())[0];
-        finalItems.push({ _id: Mongoose.Types.ObjectId(item._id), quantity: dbitem.quantity });
-        total_price += dbitem.quantity * item.price;
-        payment_note += `${item.name} (${dbitem.quantity}) - $${(
-          dbitem.quantity * item.price
-        ).toFixed(2)}, `;
+      // Process each item in the items array
+      items.forEach((item) => {
+        // Find the corresponding dbItem
+        const dbItem = dbItems.find((dbItem) => dbItem._id.toString() === item.id.toString());
+
+        if (dbItem) {
+          // Add the item to finalItems
+          finalItems.push({
+            _id: Mongoose.Types.ObjectId(dbItem._id),
+            quantity: item.quantity,
+            ind: item.ind
+          });
+
+          let extraPrice;
+          if (item.ind != null) extraPrice = extractExtraCharge(dbItem?.choices[item.ind]);
+
+          // Update total_price and payment_note
+          total_price += item.quantity * (dbItem.price + (extraPrice ? extraPrice : 0.0));
+
+          payment_note += `${dbItem.name} (${item.quantity}) - $${(
+            item.quantity * dbItem.price
+          ).toFixed(2)}, `;
+        }
       });
 
       let response = null;
@@ -256,7 +286,8 @@ module.exports = {
           name: 1,
           description: 1,
           image: 1,
-          price: 1
+          price: 1,
+          choices: 1
         },
         sort: { createdAt: -1 }
       });
@@ -287,7 +318,8 @@ module.exports = {
           name: 1,
           description: 1,
           image: 1,
-          price: 1
+          price: 1,
+          choices: 1
         },
         sort: { createdAt: -1 },
         limit: pageLimit,
@@ -333,7 +365,8 @@ module.exports = {
           name: 1,
           description: 1,
           image: 1,
-          price: 1
+          price: 1,
+          choices: 1
         },
         sort: { updatedAt: -1 }
       });

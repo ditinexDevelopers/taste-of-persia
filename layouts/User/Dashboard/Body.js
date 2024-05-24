@@ -7,6 +7,20 @@ import { MdRemoveShoppingCart, MdCancel } from 'react-icons/md';
 import Billing from './Billing';
 import Orders from './Orders';
 
+function extractExtraCharge(text) {
+  // Define a regular expression pattern to match "add extra $<number>"
+  const regex = /add extra \$([\d.]+)/i;
+  const match = text.match(regex);
+
+  // If there's a match, return the number part (which is in the first capturing group)
+  if (match) {
+    return parseFloat(match[1]); // This will give you "10.00" or "25.00"
+  }
+
+  // If no match is found, return null or some default value
+  return null;
+}
+
 const Section = ({ _this }) => {
   const router = useRouter();
   const item = _this.selectedOrder;
@@ -35,11 +49,22 @@ const Section = ({ _this }) => {
             </p>
             <p>ITEMS : </p>
             {item.items.map((food, i) => {
+              let charges;
+              if (food.ind != null) charges = extractExtraCharge(food?._id?.choices[food?.ind]);
+
               return (
-                <div key={i} className="flex flex-row gap-2">
-                  <div className="flex flex-1 text-left">{food._id.name}</div>
+                <div key={i} className="flex flex-row gap-2 mb-1">
+                  <div className="flex flex-1 text-left">
+                    {food._id.name}
+                    {food.ind != null && (
+                      <span className="truncate w-[120px]">({food._id?.choices[food?.ind]})</span>
+                    )}
+                  </div>
                   <div className="flex w-20 text-left">x {food.quantity}</div>
-                  <div className="flex w-20 text-left">$ {food._id.price}</div>
+                  <div className={`flex ${charges ? 'w-32' : 'w-20'} text-left`}>
+                    $ {food._id.price}
+                    {food?.ind != null && charges && <span className="pl-0.5">+${charges}</span>}
+                  </div>
                 </div>
               );
             })}

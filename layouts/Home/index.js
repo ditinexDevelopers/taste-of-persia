@@ -37,7 +37,13 @@ const Index = () => {
 
   const addToCart = (i, ind = null) => {
     toast.success('Item Added To Cart.');
-    //modify a little so for 657d59744ee5b6cea853c16b && 657d5a0f4ee5b6cea853c16c (4 or 8 platters and price ko accordingly modify karna hoga)
+    if (
+      ind != null &&
+      (i._id == '657d59744ee5b6cea853c16b' || i._id == '657d5a0f4ee5b6cea853c16c')
+    ) {
+      let extra = ind == 0 ? 10.0 : 25.0;
+      i = { ...i, price: i.price + extra };
+    }
     const value = { ...i, quantity: 1, ind };
     const temp = [
       ...new Map([...cart, value].map((item) => [`${item._id}_${item.ind}`, item])).values()

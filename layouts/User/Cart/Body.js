@@ -75,7 +75,7 @@ const Section = ({ _this }) => {
                         <div className="sm:ml-3 flex-1 pr-2">
                           <div className="sm:text-xl text-base text-left">{item.name}</div>
                           <div className="sm:block hidden text-base text-left truncate w-[300px]">
-                            {item?.choices?.length > 0
+                            {(item?.choices?.length && item?.ind != null) > 0
                               ? item?.choices[item?.ind]
                               : item.description}
                           </div>
