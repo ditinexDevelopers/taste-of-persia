@@ -47,34 +47,36 @@ const Section = ({ _this }) => {
             <p className="mb-3">
               ID : <span className="font-semibold"># {parseInt(item._id.substring(0, 8), 16)}</span>
             </p>
-            <p>ITEMS : </p>
+            <p className="font-semibold">ITEMS : </p>
             {item.items.map((food, i) => {
               let charges;
               if (food.ind != null) charges = extractExtraCharge(food?._id?.choices[food?.ind]);
 
               return (
-                <div key={i} className="flex flex-row gap-2 mb-1">
-                  <div className="flex flex-1 text-left">
-                    {food._id.name}
-                    {food.ind != null && (
-                      <span className="truncate w-[120px]">({food._id?.choices[food?.ind]})</span>
-                    )}
+                <div className="mb-2" key={i}>
+                  <div className="flex flex-row gap-2 mb-1">
+                    <div className="flex flex-1 text-left">{food._id.name}</div>
+                    <div className="flex w-20 text-left">x {food.quantity}</div>
+                    <div className={`flex ${charges ? 'w-32' : 'w-20'} text-left`}>
+                      $ {food._id.price}
+                      {food?.ind != null && charges && <span className="pl-0.5">+${charges}</span>}
+                    </div>
                   </div>
-                  <div className="flex w-20 text-left">x {food.quantity}</div>
-                  <div className={`flex ${charges ? 'w-32' : 'w-20'} text-left`}>
-                    $ {food._id.price}
-                    {food?.ind != null && charges && <span className="pl-0.5">+${charges}</span>}
-                  </div>
+                  {food.ind != null && (
+                    <span className="pl-3 text-sm truncate w-full">
+                      &bull; {food._id?.choices[food?.ind]}
+                    </span>
+                  )}
                 </div>
               );
             })}
 
             <div className="flex flex-row gap-2">
-              <div className="flex flex-1 text-left">TOTAL : </div>
+              <div className="flex flex-1 text-left font-semibold">TOTAL : </div>
               <div className="flex w-20 text-left"></div>
               <div className="flex w-20 text-left">$ {item.total_price.toFixed(2)}</div>
             </div>
-            <p className="mt-4">BILLING DETAILS : </p>
+            <p className="mt-4 font-semibold">BILLING DETAILS : </p>
             <p>Name : {item.name}</p>
             <p>Email : {item.email}</p>
             <p>Mobile : {item.mobile}</p>
