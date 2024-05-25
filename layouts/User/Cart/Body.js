@@ -75,11 +75,15 @@ const Section = ({ _this }) => {
                         <div className="sm:ml-3 flex-1 pr-2">
                           <div className="sm:text-xl text-base text-left">{item.name}</div>
                           <div className="sm:block hidden text-base text-left truncate w-[300px]">
-                            {item.description}
+                            {(item?.choices?.length && item?.ind != null) > 0
+                              ? item?.choices[item?.ind]
+                              : item.description}
                           </div>
                           <div
                             className="text-red-500 inline-flex flex-row items-center text-sm cursor-pointer hover:underline mt-1"
-                            onClick={() => _this.dispatch(_this.removeItem(item._id))}
+                            onClick={() =>
+                              _this.dispatch(_this.removeItem({ id: item._id, ind: item.ind }))
+                            }
                           >
                             <MdCancel className="mr-1" /> Remove
                           </div>
@@ -89,7 +93,11 @@ const Section = ({ _this }) => {
                         <div className="flex flex-row items-center ">
                           <div
                             className="w-8 h-8 transition-all duration-300 bg-backgroundlight hover:bg-primarylight flex justify-center items-center font-bold text-lg rounded-tl-full rounded-bl-full border border-primarylight cursor-pointer text-secondary"
-                            onClick={() => _this.dispatch(_this.decrementQuantity(item._id))}
+                            onClick={() =>
+                              _this.dispatch(
+                                _this.decrementQuantity({ id: item._id, ind: item?.ind })
+                              )
+                            }
                           >
                             {' '}
                             -{' '}
@@ -99,7 +107,11 @@ const Section = ({ _this }) => {
                           </div>
                           <div
                             className="w-8 h-8 transition-all duration-300 bg-backgroundlight hover:bg-primarylight flex justify-center items-center font-bold text-lg rounded-tr-full rounded-br-full border border-primarylight cursor-pointer text-secondary"
-                            onClick={() => _this.dispatch(_this.incrementQuantity(item._id))}
+                            onClick={() =>
+                              _this.dispatch(
+                                _this.incrementQuantity({ id: item._id, ind: item?.ind })
+                              )
+                            }
                           >
                             {' '}
                             +{' '}

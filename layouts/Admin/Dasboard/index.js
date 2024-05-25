@@ -32,6 +32,8 @@ const Index = () => {
     'tue-fri': { opens: '', closed: '' },
     'sat-sun': { opens: '', closed: '' }
   });
+  const [modalVisibility, setModalVisibility] = useState(false);
+  const [orderDetails, setOrderDetails] = useState(null);
 
   // useEffect(() => {
   //   try {
@@ -226,7 +228,11 @@ const Index = () => {
           editTimings,
           timings,
           setEditTimings,
-          updateTimings
+          updateTimings,
+          modalVisibility,
+          setModalVisibility,
+          orderDetails,
+          setOrderDetails
         }}
       />
     </DashboardContainer>

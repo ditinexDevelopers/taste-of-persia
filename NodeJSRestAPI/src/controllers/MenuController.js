@@ -103,6 +103,41 @@ module.exports = {
       HandleServerError(res, req, err);
     }
   },
+  AddNewMenuItem: async (req, res, next) => {
+    try {
+      const { user } = req;
+      if (user?.user_role !== 'admin') return UnauthorizedError(res);
+      const { category, price, name } = req.body;
+      const description = req.body?.description;
+      const image_data = req.files?.image_data;
+
+      const menus = await Find({
+        model: Menu
+      });
+
+      const uploadedPath = ImageUploader('/images/', image_data);
+
+      const data = await Insert({
+        model: Menu,
+        data: {
+          index: menus?.length,
+          name,
+          category,
+          description,
+          price,
+          image: uploadedPath
+        }
+      });
+
+      if (!data) {
+        return HandleError(res, 'Failed to add menu item!');
+      }
+
+      return HandleSuccess(res, data);
+    } catch (err) {
+      HandleServerError(res, req, err);
+    }
+  },
   EditMenuDetails: async (req, res, next) => {
     try {
       const { user } = req;

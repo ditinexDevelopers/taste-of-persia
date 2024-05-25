@@ -70,6 +70,11 @@ const Section = ({ _this }) => {
                           >
                             <div className="flex flex-1 text-left text-xs sm:text-sm">
                               {food._id?.name}
+                              {food.ind != null && (
+                                <span className="ml-0.5 truncate w-[150px]">
+                                  ({food._id?.choices[food?.ind]})
+                                </span>
+                              )}
                             </div>
                             <div className="flex w-6 sm:w-20 text-left text-xs sm:text-sm">
                               x {food?.quantity}

@@ -5,7 +5,9 @@ import Switch from './Switch';
 import classNames from 'classnames';
 import { BsToggle2Off, BsToggle2On } from 'react-icons/bs';
 import { FaRegEdit } from 'react-icons/fa';
+import { IoMdAddCircleOutline } from 'react-icons/io';
 import EditMenuModal from './EditMenuModal';
+import AddMenuModal from './AddMenuModal';
 
 const Section = ({ _this }) => {
   const CatIcon = {
@@ -23,8 +25,15 @@ const Section = ({ _this }) => {
 
   return (
     <div className="bg-white shadow-dashboard-md p-4 mt-10 rounded-xl">
-      <div className="relative bg-gradient-to-tr from-blue-500 to-blue-700 -mt-10 mb-4 rounded-xl text-white grid items-center w-full h-16 py-2 px-8 shadow-lg-blue text-2xl">
+      <div className="relative bg-gradient-to-tr from-blue-500 to-blue-700 -mt-10 mb-4 rounded-xl text-white flex justify-between items-center w-full h-16 py-2 px-8 shadow-lg-blue text-2xl">
         Menu List
+        <span
+          onClick={() => _this.setAddMenuModalVisibility(true)}
+          className="cursor-pointer flex items-center bg-toggle-btn-bg hover:bg-gray-700 rounded-full shadow py-2 px-4 transition"
+        >
+          <IoMdAddCircleOutline className="mr-2" size={20} />
+          <p className="text-base">Add New Item</p>
+        </span>
       </div>
       <div className="sm:flex items-center flex-wrap">
         <div
@@ -122,6 +131,7 @@ const Section = ({ _this }) => {
       </div>
 
       <EditMenuModal _this={_this} />
+      <AddMenuModal _this={_this} />
     </div>
   );
 };

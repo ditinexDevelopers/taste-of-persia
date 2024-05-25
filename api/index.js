@@ -212,6 +212,19 @@ const apiPool = {
     }
     return handleResponse(response);
   },
+  addNewMenu: async (data) => {
+    const token = await getToken();
+    let response = null;
+    try {
+      response = await api.post('/v1/menu/add-new-menu', data, {
+        params: {},
+        headers: { Authorization: 'Bearer: ' + token, 'Content-Type': 'multipart/form-data' }
+      });
+    } catch (e) {
+      response = e;
+    }
+    return handleResponse(response);
+  },
   GetResturantTimes: async (data) => {
     const token = await getToken();
     let response = null;

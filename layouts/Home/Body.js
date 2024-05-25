@@ -5,6 +5,7 @@ import Hero2 from './Hero2';
 import Menu from './Menu';
 import Link from 'next/link';
 import CheckoutButton from './CheckoutButton';
+import MenuOptionsModal from './MenuOptionsModal';
 
 const Section = ({ _this }) => {
   return (
@@ -29,6 +30,7 @@ const Section = ({ _this }) => {
       <Hero />
       <Menu _this={_this} />
       <Hero2 _this={_this} />
+      <MenuOptionsModal _this={_this} />
     </div>
   );
 };
