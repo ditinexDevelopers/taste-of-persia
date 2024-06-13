@@ -37,7 +37,7 @@ const EditTimingModal = ({ _this }) => {
               <div>
                 <label
                   htmlFor="start-time"
-                  className="block mb-2 text-xs font-medium text-gray-600 dark:text-white"
+                  className="block mb-2 text-xs font-medium text-gray-600"
                 >
                   Opens: ({moment(_this.timings?.['tue-fri']?.opens, 'HH:mm').format('h:mm A')})
                 </label>
@@ -45,24 +45,21 @@ const EditTimingModal = ({ _this }) => {
                   <input
                     type="time"
                     id="start-time"
-                    className="bg-gray-50 border leading-none border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-200 focus:border-blue-200 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-200 dark:focus:border-blue-200"
+                    className="bg-gray-50 border leading-none border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-200 focus:border-blue-200 block w-full p-2.5"
                     value={_this.editTimings['tue-fri']?.opens}
                     onChange={(e) => handleTimeChange('tue-fri', 'opens', e.target.value)}
                   />
                 </div>
               </div>
               <div>
-                <label
-                  htmlFor="end-time"
-                  className="block mb-2 text-xs font-medium text-gray-600 dark:text-white"
-                >
+                <label htmlFor="end-time" className="block mb-2 text-xs font-medium text-gray-600">
                   Closed: ({moment(_this.timings?.['tue-fri']?.closed, 'HH:mm').format('h:mm A')})
                 </label>
                 <div className="relative">
                   <input
                     type="time"
                     id="end-time"
-                    className="bg-gray-50 border leading-none border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-200 focus:border-blue-200 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-200 dark:focus:border-blue-200"
+                    className="bg-gray-50 border leading-none border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-200 focus:border-blue-200 block w-full p-2.5"
                     value={_this.editTimings['tue-fri']?.closed}
                     onChange={(e) => handleTimeChange('tue-fri', 'closed', e.target.value)}
                   />
@@ -79,7 +76,7 @@ const EditTimingModal = ({ _this }) => {
               <div>
                 <label
                   htmlFor="start-time-dt2"
-                  className="block mb-2 text-xs font-medium text-gray-600 dark:text-white"
+                  className="block mb-2 text-xs font-medium text-gray-600"
                 >
                   Opens: ({moment(_this.timings?.['sat-sun']?.opens, 'HH:mm').format('h:mm A')})
                 </label>
@@ -87,7 +84,7 @@ const EditTimingModal = ({ _this }) => {
                   <input
                     type="time"
                     id="start-time-dt2"
-                    className="bg-gray-50 border leading-none border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-200 focus:border-blue-200 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-200 dark:focus:border-blue-200"
+                    className="bg-gray-50 border leading-none border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-200 focus:border-blue-200 block w-full p-2.5"
                     value={_this.editTimings['sat-sun']?.opens}
                     onChange={(e) => handleTimeChange('sat-sun', 'opens', e.target.value)}
                   />
@@ -96,7 +93,7 @@ const EditTimingModal = ({ _this }) => {
               <div>
                 <label
                   htmlFor="end-time-dt2"
-                  className="block mb-2 text-xs font-medium text-gray-600 dark:text-white"
+                  className="block mb-2 text-xs font-medium text-gray-600"
                 >
                   Closed: ({moment(_this.timings?.['sat-sun']?.closed, 'HH:mm').format('h:mm A')})
                 </label>
@@ -104,7 +101,7 @@ const EditTimingModal = ({ _this }) => {
                   <input
                     type="time"
                     id="end-time-dt2"
-                    className="bg-gray-50 border leading-none border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-200 focus:border-blue-200 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-200 dark:focus:border-blue-200"
+                    className="bg-gray-50 border leading-none border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-200 focus:border-blue-200 block w-full p-2.5"
                     value={_this.editTimings['sat-sun']?.closed}
                     onChange={(e) => handleTimeChange('sat-sun', 'closed', e.target.value)}
                   />

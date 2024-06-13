@@ -22,17 +22,21 @@ const MenuOptionsModal = ({ _this }) => {
         <div className="flex flex-col space-y-5 py-5 px-3">
           <div className="w-full flex flex-row items-center bg-white border border-gray-200 rounded-lg">
             <img
-              className="object-cover rounded-tl-lg rounded-bl-lg h-28 w-36"
+              className="object-cover rounded-lg h-28 w-36"
               src={Config.STORAGE_URL + _this.selectedItem?.image}
               alt={_this.selectedItem?.name}
             />
             <div className="flex flex-col justify-between p-4 leading-normal">
-              <h5 className="mb-2 text-lg font-bold tracking-tight text-gray-900">
+              <h5 className="mb-1 text-base font-bold tracking-tight text-gray-900">
                 {_this.selectedItem?.name}
               </h5>
-              <h5 className="mb-2 text-lg font-medium tracking-tight text-gray-900">
+              <h5 className="mb-1.5 text-base font-medium tracking-tight text-gray-900">
                 $ {_this.selectedItem?.price}
               </h5>
+              <p className="text-sm tracking-tight text-gray-700">
+                {' '}
+                {_this.selectedItem?.description}
+              </p>
             </div>
           </div>
 
