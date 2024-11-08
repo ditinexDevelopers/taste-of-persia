@@ -61,12 +61,18 @@ const EditMenuModal = ({ _this }) => {
             </label>
             <input
               type="text"
-              readOnly={true}
+              // readOnly={true}
               value={_this.editMenuData?.menuName}
               className=" w-full px-4 py-2 mt-2  bg-white border rounded-md focus:border-gray-100 focus:ring-gray-100 focus:outline-none focus:ring focus:ring-opacity-40"
+              onChange={(e) => {
+                _this.setEditMenuData((prev) => ({
+                  ...prev,
+                  menuName: e.target.value
+                }));
+              }}
             />
           </div>
-          <div>
+          {/* <div>
             <label htmlFor="password" className="block text-sm text-gray-800">
               Current Price
             </label>
@@ -76,10 +82,10 @@ const EditMenuModal = ({ _this }) => {
               value={_this.editMenuData?.currentPrice}
               className=" w-full px-4 py-2 mt-2  bg-white border rounded-md focus:border-gray-100 focus:ring-gray-100 focus:outline-none focus:ring focus:ring-opacity-40"
             />
-          </div>
-          <div className="pb-5">
+          </div> */}
+          <div className="">
             <label htmlFor="password" className="block text-sm text-gray-800">
-              Edited Price
+              Price
             </label>
             <input
               type="text"
@@ -91,6 +97,24 @@ const EditMenuModal = ({ _this }) => {
                 }))
               }
               className=" w-full px-4 py-2 mt-2 text-secondary bg-white border rounded-md focus:border-secondary focus:ring-secondary focus:outline-none focus:ring focus:ring-opacity-40"
+            />
+          </div>
+
+          <div>
+            <label htmlFor="password" className="block text-sm text-gray-800">
+              Description
+            </label>
+            <textarea
+              type="text"
+              // readOnly={true}
+              value={_this.editMenuData?.menuDescription}
+              onChange={(e) =>
+                _this.setEditMenuData((prev) => ({
+                  ...prev,
+                  menuDescription: e.target.value
+                }))
+              }
+              className=" w-full px-4 py-2 mt-2  bg-white border rounded-md focus:border-gray-100 focus:ring-gray-100 focus:outline-none focus:ring focus:ring-opacity-40"
             />
           </div>
           <ButtonSecondary

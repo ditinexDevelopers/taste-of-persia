@@ -102,6 +102,7 @@ const Section = ({ _this }) => {
                         ...prev,
                         id: item._id,
                         menuName: item.name,
+                        menuDescription: item.description,
                         price: item.price,
                         currentPrice: item.price,
                         image: item.image,

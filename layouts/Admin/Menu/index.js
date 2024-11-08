@@ -18,6 +18,7 @@ const Index = () => {
     id: '',
     price: '',
     menuName: '',
+    menuDescription: '',
     currentPrice: '',
     image_data: '',
     image_prev: ''
@@ -125,6 +126,8 @@ const Index = () => {
     const formData = new FormData();
     formData.append('id', editMenuData.id);
     formData.append('price', editMenuData.price);
+    formData.append('menuName', editMenuData.menuName);
+    formData.append('menuDescription', editMenuData.menuDescription);
     if (editMenuData.image_data != '') {
       formData.append('image_data', editMenuData.image_data);
     }
@@ -140,6 +143,7 @@ const Index = () => {
             id: '',
             price: '',
             currentPrice: '',
+            menuDescription: '',
             menuName: '',
             image_data: '',
             image_prev: ''

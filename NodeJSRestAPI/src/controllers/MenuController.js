@@ -142,9 +142,9 @@ module.exports = {
     try {
       const { user } = req;
       if (user.user_role !== 'admin') return UnauthorizedError(res);
-      const { id, price } = req.body;
+      const { id, price, menuName, menuDescription } = req.body;
+
       const image_data = req.files?.image_data;
-      console.log(image_data);
       if (!id) return HandleError(res, 'Invalid menu id.');
       // if (!price) return HandleError(res, 'Invalid Price.');
 
@@ -163,6 +163,8 @@ module.exports = {
         where: { _id: Mongoose.Types.ObjectId(id) },
         update: {
           $set: {
+            name: menuName,
+            description: menuDescription,
             price: price,
             image: uploadedPath
           }
