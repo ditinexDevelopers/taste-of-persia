@@ -144,6 +144,7 @@ module.exports = {
       if (user.user_role !== 'admin') return UnauthorizedError(res);
       const { id, price } = req.body;
       const image_data = req.files?.image_data;
+      console.log(image_data);
       if (!id) return HandleError(res, 'Invalid menu id.');
       // if (!price) return HandleError(res, 'Invalid Price.');
 
@@ -155,7 +156,7 @@ module.exports = {
       });
 
       const oldPath = menu.image;
-      const uploadedPath = ImageUploader('/images/', image_data);
+      const uploadedPath = image_data ? ImageUploader('/images/', image_data) : oldPath;
 
       const data = await FindAndUpdate({
         model: Menu,
